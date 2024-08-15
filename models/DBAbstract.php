@@ -1,12 +1,9 @@
 <?php 
 
+	include_once 'credenciales.php';
+
 	// Anula los errores de mysql
 	mysqli_report(MYSQLI_REPORT_OFF);
-
-	define("HOST", "localhost");
-	define("USER", "root");
-	define("PASS", "");
-	define("DB", "sayc");
 
 	/**
 	 * 

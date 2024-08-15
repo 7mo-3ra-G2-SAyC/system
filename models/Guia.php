@@ -23,7 +23,7 @@
 		function __construct($carnet, $dni){
 			parent::__construct();
 
-			$sql = "DESCRIBE users;";
+			$sql = "DESCRIBE guias;";
 
 			$result = $this->query($sql);
 
@@ -81,13 +81,11 @@
 
 			$vector_error = ["error" => "", "errno" => 0];
 
-			// se agrego las comillas alrededor de email para que no tire error de mysql
-			$ssql = "SELECT guias WHERE carnet = '".$this->carnet."'";
-
-			$result = $this->query($ssql);
+			// verifica si el guia existe en la db
+			$result = $this->getByNroCarnet();
 
 			// no se encontro el numero de carnet
-			if(count($result)==0){
+			if(!$result){
 				$vector_error["error"] = "No existe el numero de carnet";
 				$vector_error["errno"] = 404;
 
@@ -97,7 +95,7 @@
 			$result = $result[0];
 
 			// El DNI no es correcto
-			if($result["dni"]!=md5($this->dni)){
+			if($result["dni"]!=$this->dni){
 				$vector_error["error"] = "El DNI no es valido";
 				$vector_error["errno"] = 405;
 
@@ -107,7 +105,7 @@
 			// se agrega al arreglo los mensajes de error
 			$result = array_merge($vector_error, $result);
 
-			// aqui deberiamos colocar la autocarga de los atributos de ese usuarios
+			// aqui deberiamos colocar la autocarga de los atributos de ese usuario
 			//===================
 
 			foreach ($this->attributes as $key => $attribute) {
