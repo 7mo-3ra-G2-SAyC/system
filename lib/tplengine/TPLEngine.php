@@ -29,7 +29,7 @@
 			}
 
             // Loads view's content into buffer
-            $this->buffer = file_get_contents("views/".$vista."View.html");
+            $this->buffer = file_get_contents("views/".$view."View.html");
 
         }
 
