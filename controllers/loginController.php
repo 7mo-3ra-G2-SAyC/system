@@ -24,7 +24,7 @@
 			$_SESSION['sayc']['guia'] = $guide;
 
 			// lo redirigue al panel
-			header("Location:?slug=panel");
+			header("Location:panel");
 		}
 
 		// carga el mensaje de error 
