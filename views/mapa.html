@@ -16,10 +16,11 @@
         font-style: normal;
     }
     .smokeCardFuncion{
+        top: 0;
         width: 100vw;
         height: 100vh;
         background-color: #00000080;
-        position: relative;
+        position: absolute;
         user-select: none;
     }
     .smokeCardFuncion .cardFuncion{
@@ -40,6 +41,7 @@
         width: 36px;
         position: absolute;
         right: 12px;
+        z-index: 100;
     }
     .smokeCardFuncion .cardFuncion .cerrar i{
         color: #333;
@@ -102,7 +104,7 @@
                 <p id="estadoCardFuncion"></p>
             </div>
             <div class="titulo">
-                <p id="itituloCardFuncion"></p>
+                <p id="tituloCardFuncion"></p>
             </div>
             <div class="ubicacion">
                 <p id="ubicacionCardFuncion"></p>
@@ -646,36 +648,91 @@
         function cerrarCardSala(){
             popUpCardSala.style.display = "none";
         }
+
+        function getUbicacion(ubicacion,sala) {
+
+            console.log(ubicacion);
+            if (ubicacion.includes("pisoUno")) {
+                return "Primer piso, Sala "+sala;
+            }
+            if (ubicacion.includes("pisoDos")) {
+                return "Segundo piso, Sala "+sala;
+            }
+            if (ubicacion.includes("taller")) {
+                return "Taller, Sala "+sala;
+            }
+            if (ubicacion.includes("plantaBaja")) {
+                return "Planta baja, Sala "+sala;
+            }
+        }
+
+        function getTiempoRestante() {
+            
+            const fechaProxima = new Date('2024-08-20 18:00:00');
+            const fechaActual = new Date();
+
+            const diferencia = fechaProxima - fechaActual;
+
+            const segundosTotales = Math.floor(diferencia / 1000);
+            const minutosTotales = Math.floor(segundosTotales / 60);
+            const horasTotales = Math.floor(minutosTotales / 60);
+
+            const segundos = segundosTotales % 60;
+            const minutos = minutosTotales % 60;
+            const horas = horasTotales % 24;
+
+            nextFuncionCardFuncion.innerText = `Proxima funcion en ${numerosDoble(horas)}:${numerosDoble(minutos)}:${numerosDoble(segundos)}`;
+        }
+
+        function numerosDoble(num) {
+            if (num < 10) {
+                return "0"+num;
+            }
+            return num;
+        }
+
         function abrirCardSala(numeroSala){
 
             popUpCardSala.style.display = "block";
+
+            console.log(estadosSalas);
 
             estadosSalas.pisoUno.map((sala) => {
 
                 if (sala.sala == numeroSala) {
                     
-                    console.log(sala.estado)
+                    console.log(sala)
                     
                     switch(sala.estado){
                         case libre:
 
                             cardFuncion.style.background = "#9ACC77";
-                            estadoCardFuncion.innerText = "Sala disponible"
+                            estadoCardFuncion.innerText = "Sala disponible";
+                            tituloCardFuncion.innerText = sala.name;
+                            ubicacionCardFuncion.innerText = getUbicacion(salaSelecionada.attributes.id.value,sala.sala);
+                            descripcionCardFuncion.innerText = sala.descripcion;
+                            nextFuncionCardFuncion.innerText = "Cargando siguiente funcion ..."
+                            setInterval(getTiempoRestante, 1000);
 
                         break;
                         case ocupado:
 
                             cardFuncion.style.background = "#F0D442";
                             estadoCardFuncion.innerText = "Sala ocupada"
+                            tituloCardFuncion.innerText = sala.name;
+                            ubicacionCardFuncion.innerText = getUbicacion(salaSelecionada.attributes.id.value,sala.sala);
+                            descripcionCardFuncion.innerText = sala.descripcion;
+                            nextFuncionCardFuncion.innerText = "Cargando siguiente funcion ..."
+                            setInterval(getTiempoRestante, 1000);
+
                         break;
                         case cerrado:
-                            estadoCardFuncion.innerText = "Sala Cerrada"
+                            cardFuncion.style.background = "#CC2649";
+                            estadoCardFuncion.innerText = "";
+                            tituloCardFuncion.innerText = "Sala Cerrada";
+                            ubicacionCardFuncion.innerText = getUbicacion(salaSelecionada.attributes.id.value,sala.sala);
                         break;
                     }
-                    nombre
-                    ubicacion
-                    descripcion
-                    fecha
 
                 }
 
