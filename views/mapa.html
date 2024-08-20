@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Zen Kaku Gothic Antique", sans-serif;
+        font-style: normal;
+    }
+    .smokeCardFuncion{
+        width: 100vw;
+        height: 100vh;
+        background-color: #00000080;
+        position: relative;
+        user-select: none;
+    }
+    .smokeCardFuncion .cardFuncion{
+        position: relative;
+        background-color: #AEE7AD;
+        width: 60%;
+        max-width: 500px;
+        padding: 12px;
+        border-radius: 8px;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .smokeCardFuncion .cardFuncion .cerrar{
+        background-color: rgb(253, 127, 127);
+        padding: 2px;
+        border-radius: 40px;
+        width: 36px;
+        position: absolute;
+        right: 12px;
+    }
+    .smokeCardFuncion .cardFuncion .cerrar i{
+        color: #333;
+        text-align: center;
+        font-weight: 500;
+        font-size: 30px;
+    }
+    .smokeCardFuncion .cardFuncion .estadoSala{
+        color: #060E52;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .smokeCardFuncion .cardFuncion .titulo{
+        color: #060E52;
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .smokeCardFuncion .cardFuncion .ubicacion{
+        font-weight: 900;
+    }
+    .smokeCardFuncion .cardFuncion .descripcion{
+        margin: 10px;
+    }
+    .smokeCardFuncion .cardFuncion .nextFuncion{
+        background-color: black;
+        padding: 4px;
+        border-radius: 30px;
+        width: 230px;
+    }
+    .smokeCardFuncion .cardFuncion .nextFuncion p{
+        color: white;
+        font-weight: 600;
+        text-align: center;
+    }
+    .smokeCardFuncion .cardFuncion .fa-masks-theater{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 160px;
+        color: #00000029;
+    }
+    path{
+        fill: #333;
+    }
+    #pasillo{
+        fill: #868686c9;
+    }
+    #escalera{
+        fill: rgba(0, 128, 0, 0.726);
+    }
+</style>
+<body>
+    <div class="smokeCardFuncion" id="popUpCardSala">
+        <div class="cardFuncion" id="cardFuncion">
+            <div class="cerrar" onclick="cerrarCardSala()">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+            <div class="estadoSala">
+                <p id="estadoCardFuncion"></p>
+            </div>
+            <div class="titulo">
+                <p id="itituloCardFuncion"></p>
+            </div>
+            <div class="ubicacion">
+                <p id="ubicacionCardFuncion"></p>
+            </div>
+            <div class="descripcion">
+                <p id="descripcionCardFuncion"></p>
+            </div>
+            <div class="nextFuncion">
+                <p id="nextFuncionCardFuncion"></p>
+            </div>
+            <i class="fa-solid fa-masks-theater"></i>
+        </div>
+    </div>
+    <svg viewBox="0 0 1350.000000 830.000000">
+        <g transform="translate(0.000000,830.000000) scale(0.100000,-0.100000)"
+        fill="#000000" stroke="none">
+        <path onclick="abrirCardSala(2)" id="pisoUno_sala2" d="M1530 7345 l0 -806 63 3 62 3 3 103 c3 115 2 114 84 87 60 -21 96
+        -60 118 -131 l18 -59 546 -3 546 -2 0 805 0 805 -720 0 -720 0 0 -805z"/>
+        <path onclick="abrirCardSala(1)" id="pisoUno_sala1" d="M90 7345 l0 -795 55 0 55 0 0 100 c0 73 3 100 13 100 15 0 106 -44
+        128 -62 27 -22 59 -81 59 -110 l0 -28 555 0 555 0 0 795 0 795 -710 0 -710 0
+        0 -795z"/>
+        <path onclick="abrirCardSala(3)" id="pisoUno_sala3" d="M2990 7345 l0 -795 40 0 40 0 0 100 c0 113 2 115 75 81 51 -23 90
+        -68 112 -131 l18 -50 577 0 578 0 0 795 0 795 -720 0 -720 0 0 -795z"/>
+        <path onclick="abrirCardSala(4)" id="pisoUno_sala4" d="M4450 6990 l0 -440 218 0 219 0 12 43 c27 92 76 140 160 153 l41 7 0
+        -102 0 -101 210 0 210 0 0 100 c0 62 4 100 10 100 20 0 105 -48 127 -72 25
+        -27 43 -69 43 -104 l0 -24 310 0 310 0 0 440 0 440 -935 0 -935 0 0 -440z"/>
+        <path onclick="abrirCardSala(5)" id="pisoUno_sala5" d="M6340 6706 l0 -724 63 -21 c88 -30 137 -86 137 -157 0 -24 -1 -24
+        -100 -24 l-100 0 0 -50 0 -50 695 0 695 0 0 875 0 875 -695 0 -695 0 0 -724z"/>
+        <path onclick="abrirCardSala(6)" id="pisoUno_sala6" d="M7740 6555 l0 -875 564 0 564 0 6 32 c12 59 54 116 109 148 85 49 87
+        47 87 -75 l0 -105 30 0 30 0 0 875 0 875 -695 0 -695 0 0 -875z"/>
+        <path onclick="abrirCardSala(7)" id="pisoUno_sala7" d="M9140 6555 l0 -875 30 0 30 0 0 105 c0 121 0 121 85 81 78 -37 125
+        -98 125 -162 l0 -24 575 0 575 0 0 875 0 875 -710 0 -710 0 0 -875z"/>
+        <path onclick="abrirCardSala(8)" id="pisoUno_sala8" d="M10570 6555 l0 -875 584 0 584 0 23 61 c27 73 70 120 126 137 75 22
+        73 24 73 -93 0 -98 1 -105 20 -105 20 0 20 7 20 875 l0 875 -715 0 -715 0 0
+        -875z"/>
+        <path onclick="abrirCardSala(9)" id="pisoUno_sala9" d="M12010 6555 l0 -875 25 0 25 0 0 105 c0 117 -2 115 71 90 62 -22 116
+        -78 136 -142 l17 -53 563 0 563 0 0 875 0 875 -700 0 -700 0 0 -875z"/>
+        <path id="pasillo" d="M208 6633 l-3 -98 -57 -3 -58 -3 0 -688 0 -688 287 -6 c157 -4 328
+        -7 379 -7 l93 0 3 132 3 132 44 8 c57 10 112 48 139 97 39 68 36 71 -83 71
+        l-105 0 0 35 0 35 585 0 c460 0 586 -3 590 -12 2 -7 6 -30 10 -51 7 -45 54
+        -101 106 -128 70 -35 72 -33 67 86 l-5 105 473 0 472 0 11 -52 c19 -85 90
+        -158 154 -158 l27 0 0 105 0 105 268 0 c148 0 411 -3 585 -7 l317 -6 0 -74 0
+        -73 -100 0 c-113 0 -116 -3 -79 -69 25 -46 76 -81 134 -93 l45 -10 0 -235 0
+        -236 173 6 c94 4 368 6 607 6 239 -1 1959 -4 3822 -6 l3388 -5 0 281 0 281 35
+        0 c87 0 175 81 175 161 0 18 -8 19 -105 19 l-105 0 0 35 0 35 -115 0 c-84 0
+        -117 3 -119 13 -2 6 -9 31 -15 54 -15 54 -55 101 -106 124 -75 34 -77 33 -73
+        -81 3 -113 5 -110 -75 -110 l-52 0 3 106 4 107 -38 -6 c-68 -11 -114 -59 -145
+        -148 l-18 -54 -1175 -3 -1175 -2 -6 44 c-4 24 -15 58 -26 75 -22 37 -83 78
+        -127 87 l-32 7 0 -107 0 -106 -75 0 -75 0 0 105 c0 88 -2 105 -15 105 -52 0
+        -141 -88 -151 -148 -3 -22 -9 -44 -13 -50 -7 -12 -111 -13 -1853 -12 l-708 0
+        0 65 0 65 101 0 102 0 -6 42 c-7 55 -40 86 -124 114 l-68 23 -3 280 -2 281
+        -313 2 -312 3 -11 46 c-17 68 -30 87 -82 120 -71 45 -72 43 -72 -71 l0 -100
+        -220 0 -220 0 0 101 0 102 -41 -7 c-77 -12 -124 -68 -136 -157 l-6 -39 -825 2
+        -825 3 -12 47 c-15 58 -53 110 -98 132 -64 30 -67 27 -67 -78 0 -76 -3 -95
+        -16 -100 -9 -3 -283 -6 -610 -6 l-594 0 -6 28 c-11 52 -35 110 -52 125 -23 21
+        -86 47 -113 47 -20 0 -21 -4 -17 -100 l3 -100 -630 0 c-346 0 -635 4 -642 8
+        -7 4 -16 27 -22 51 -11 51 -51 96 -106 122 -64 30 -64 29 -67 -78z"/>
+        <path id="salonCerrado" d="M12520 5630 l0 -30 105 0 c118 0 121 -2 89 -78 -28 -68 -110 -131
+        -171 -132 l-23 0 0 -270 0 -270 445 0 445 0 0 405 0 405 -445 0 -445 0 0 -30z"/>
+        <path id="salonCerrado" d="M870 5610 c0 -19 7 -20 105 -20 119 0 119 0 83 -76 -25 -54 -83 -100
+        -145 -116 l-43 -10 0 -129 0 -129 525 0 525 0 0 250 0 250 -525 0 c-518 0
+        -525 0 -525 -20z"/>
+        <path onclick="abrirCardSala(10)" id="pisoUno_sala10" d="M1950 4755 l0 -876 568 3 567 3 50 25 c35 17 60 40 83 74 51 76 49
+        78 -73 74 l-105 -3 0 788 0 787 -410 0 -410 0 0 -105 c0 -114 -2 -117 -57 -93
+        -65 28 -103 62 -128 111 -14 28 -25 59 -25 69 0 13 -8 18 -30 18 l-30 0 0
+        -875z"/>
+        <path onclick="abrirCardSala(11)" id="pisoUno_sala11" d="M3060 4875 l0 -755 505 0 505 0 0 755 0 755 -360 0 -360 0 0 -106 0
+        -107 -41 6 c-72 10 -153 92 -165 169 -6 36 -8 38 -45 38 l-39 0 0 -755z"/>
+        <path id="salonCerrado" d="M4090 5235 l0 -385 200 0 200 0 0 230 0 230 -23 0 c-43 0 -129 61
+        -154 110 -39 78 -37 80 77 80 l100 0 0 60 0 60 -200 0 -200 0 0 -385z"/>
+        <path id="escalera" d="M90 4800 l0 -330 380 0 380 0 0 330 0 330 -187 -2 -188 -3 -5 -155
+        -6 -155 -2 158 -2 157 -185 0 -185 0 0 -330z"/>
+        <path id="escalera" d="M5725 4838 c-3 -7 -4 -236 -3 -508 l3 -495 300 0 300 0 0 505 0 505
+        -298 3 c-233 2 -299 0 -302 -10z"/>
+        <path onclick="abrirCardSala(12)" id="pisoUno_sala12" d="M3060 4085 c0 -12 18 -15 105 -15 66 0 105 -4 105 -10 0 -24 -51
+        -109 -83 -137 -18 -16 -55 -35 -80 -43 l-47 -13 0 -436 0 -437 44 -12 c57 -15
+        110 -62 142 -123 13 -27 24 -51 24 -54 0 -3 -47 -5 -105 -5 -87 0 -105 -3
+        -105 -15 0 -13 29 -15 205 -15 l205 0 0 -385 0 -385 23 0 c18 0 26 10 40 50
+        10 28 31 66 48 84 26 31 104 76 129 76 5 0 11 -44 12 -102 l3 -103 175 0 175
+        0 0 193 c0 105 -1 577 -3 1047 l-2 855 -505 0 c-442 0 -505 -2 -505 -15z"/>
+        <path onclick="abrirCardSala(13)" id="pisoUno_sala13" d="M1950 3320 l0 -540 544 0 c497 0 545 1 548 16 3 14 17 17 100 15 53
+        -1 99 2 102 7 8 14 -47 96 -81 120 -17 12 -51 27 -77 34 l-46 12 0 438 0 438
+        -545 0 -545 0 0 -540z"/>
+        <path onclick="abrirCardSala(14)" id="pisoUno_sala14" d="M1950 2020 l0 -730 750 0 750 0 0 98 0 98 -44 12 c-54 14 -110 61
+        -137 113 -34 67 -31 69 81 69 l100 0 0 535 0 535 -750 0 -750 0 0 -730z"/>
+        <path id="pasillo" d="M3647 2169 c-47 -25 -95 -91 -103 -141 -6 -35 -9 -38 -40 -38 l-34 0
+        0 -160 0 -160 -100 0 c-62 0 -100 -4 -100 -10 0 -54 77 -135 137 -145 21 -4
+        44 -8 51 -10 9 -3 12 -36 12 -120 l0 -115 -60 0 -60 0 0 -40 0 -40 -98 0 c-54
+        0 -101 -2 -104 -6 -11 -10 11 -77 34 -101 27 -30 113 -73 146 -73 26 0 24 23
+        22 -263 l-1 -198 163 3 163 3 3 203 2 202 200 0 200 0 -2 513 -3 512 -182 3
+        -183 2 0 100 c0 111 -1 112 -63 79z"/>
+        <path onclick="abrirCardSala(15)" id="pisoUno_sala15" d="M1952 688 l3 -583 685 0 685 0 0 215 0 215 -440 -4 -440 -3 0 217 0
+        218 445 -4 c390 -4 445 -2 448 11 2 10 -14 21 -50 34 -96 33 -158 97 -158 163
+        l0 32 103 3 102 3 3 33 3 32 -695 0 -696 0 2 -582z"/>
+        <path id="escalera" d="M3697 943 c-4 -3 -7 -95 -7 -204 l0 -199 -172 -2 -173 -3 0 -215 0
+        -215 364 -3 c201 -1 369 2 373 6 5 5 6 192 2 426 l-7 416 -187 0 c-103 0 -190
+        -3 -193 -7z"/>
+        <path id="escalera" d="M2462 743 l3 -198 420 3 c231 2 428 6 438 8 16 5 17 21 15 192 l-3
+        187 -438 3 -437 2 2 -197z"/>
+        </g>
+    </svg>
+    <script>
+        const libre = "libre";
+        const ocupado = "ocupado";
+        const cerrado = "cerrado";
+        const estadosSalas = {
+            plantaBaja: [
+                {
+                    name: "Proyecto A",
+                    sala: 3,
+                    estado: "libre",
+                    descripcion: "Este es un proyecto enfocado en la creación de espacios colaborativos para nuevas empresas tecnológicas.",
+                    fecha: "miércoles, 10:30"
+                },
+                {
+                    name: "Proyecto E",
+                    sala: 4,
+                    estado: "ocupado",
+                    descripcion: "Desarrollo de una aplicación móvil para gestión de tareas personales.",
+                    fecha: "lunes, 11:00"
+                },
+                {
+                    name: "Proyecto F",
+                    sala: 5,
+                    estado: "libre",
+                    descripcion: "Creación de una red de apoyo para emprendedores locales.",
+                    fecha: "martes, 09:30"
+                },
+                {
+                    name: "Proyecto G",
+                    sala: 6,
+                    estado: "ocupado",
+                    descripcion: "Investigación en sistemas de gestión de inventarios.",
+                    fecha: "miércoles, 13:00"
+                },
+                {
+                    name: "Proyecto H",
+                    sala: 7,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un sistema de reservas en línea para eventos.",
+                    fecha: "jueves, 08:30"
+                },
+                {
+                    name: "Proyecto I",
+                    sala: 8,
+                    estado: "ocupado",
+                    descripcion: "Creación de un programa de fidelización para clientes.",
+                    fecha: "jueves, 15:00"
+                },
+                {
+                    name: "Proyecto J",
+                    sala: 9,
+                    estado: "libre",
+                    descripcion: "Optimización de procesos de logística y distribución.",
+                    fecha: "viernes, 10:00"
+                },
+                {
+                    name: "Proyecto K",
+                    sala: 10,
+                    estado: "ocupado",
+                    descripcion: "Desarrollo de una plataforma de telemedicina.",
+                    fecha: "viernes, 14:00"
+                },
+                {
+                    name: "Proyecto L",
+                    sala: 11,
+                    estado: "libre",
+                    descripcion: "Diseño de un sistema de análisis de datos para comercio electrónico.",
+                    fecha: "lunes, 09:00"
+                },
+                {
+                    name: "Proyecto M",
+                    sala: 12,
+                    estado: "ocupado",
+                    descripcion: "Implementación de una red social para profesionales.",
+                    fecha: "martes, 16:00"
+                },
+                {
+                    name: "Proyecto N",
+                    sala: 13,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un chatbot para atención al cliente.",
+                    fecha: "miércoles, 11:30"
+                },
+                {
+                    name: "Proyecto O",
+                    sala: 14,
+                    estado: "ocupado",
+                    descripcion: "Creación de un sistema de gestión de proyectos.",
+                    fecha: "jueves, 12:30"
+                },
+                {
+                    name: "Proyecto P",
+                    sala: 15,
+                    estado: "libre",
+                    descripcion: "Investigación en nuevos métodos de educación a distancia.",
+                    fecha: "viernes, 13:00"
+                },
+                {
+                    name: "Proyecto Q",
+                    sala: 16,
+                    estado: "ocupado",
+                    descripcion: "Desarrollo de una aplicación de realidad aumentada.",
+                    fecha: "lunes, 14:00"
+                },
+                {
+                    name: "Proyecto R",
+                    sala: 17,
+                    estado: "libre",
+                    descripcion: "Optimización de algoritmos de búsqueda en grandes volúmenes de datos.",
+                    fecha: "martes, 15:00"
+                }
+            ],
+            pisoUno: [
+                {
+                    name: "Proyecto B",
+                    sala: 1,
+                    estado: "ocupado",
+                    descripcion: "Desarrollo de una plataforma educativa para la enseñanza de programación en línea, con múltiples cursos y recursos.",
+                    fecha: "jueves, 14:45"
+                },
+                {
+                    name: "Proyecto G",
+                    sala: 2,
+                    estado: "libre",
+                    descripcion: "Investigación en inteligencia artificial para análisis de datos.",
+                    fecha: "martes, 13:00"
+                },
+                {
+                    name: "Proyecto H",
+                    sala: 3,
+                    estado: "ocupado",
+                    descripcion: "Diseño de un software para optimización de procesos industriales.",
+                    fecha: "miércoles, 15:30"
+                },
+                {
+                    name: "Proyecto I",
+                    sala: 4,
+                    estado: "cerrado",
+                    descripcion: "Desarrollo de un sistema de gestión de relaciones con clientes.",
+                    fecha: "lunes, 10:00"
+                },
+                {
+                    name: "Proyecto J",
+                    sala: 5,
+                    estado: "ocupado",
+                    descripcion: "Implementación de una herramienta de análisis de mercado.",
+                    fecha: "martes, 11:00"
+                },
+                {
+                    name: "Proyecto K",
+                    sala: 6,
+                    estado: "libre",
+                    descripcion: "Creación de una plataforma de crowdfunding para proyectos sociales.",
+                    fecha: "miércoles, 09:00"
+                },
+                {
+                    name: "Proyecto L",
+                    sala: 7,
+                    estado: "cerrado",
+                    descripcion: "Desarrollo de una aplicación de gestión de proyectos de construcción.",
+                    fecha: "jueves, 10:30"
+                },
+                {
+                    name: "Proyecto M",
+                    sala: 8,
+                    estado: "libre",
+                    descripcion: "Investigación en técnicas de machine learning para previsión de ventas.",
+                    fecha: "viernes, 11:00"
+                },
+                {
+                    name: "Proyecto N",
+                    sala: 9,
+                    estado: "ocupado",
+                    descripcion: "Diseño de un sistema de seguimiento de proyectos en tiempo real.",
+                    fecha: "lunes, 12:00"
+                },
+                {
+                    name: "Proyecto O",
+                    sala: 10,
+                    estado: "cerrado",
+                    descripcion: "Desarrollo de una aplicación de control de gastos personales.",
+                    fecha: "martes, 13:30"
+                },
+                {
+                    name: "Proyecto P",
+                    sala: 11,
+                    estado: "libre",
+                    descripcion: "Optimización de procesos de manufactura utilizando técnicas de análisis de datos.",
+                    fecha: "miércoles, 14:00"
+                },
+                {
+                    name: "Proyecto Q",
+                    sala: 12,
+                    estado: "ocupado",
+                    descripcion: "Creación de una plataforma de aprendizaje automático para reconocimiento de imágenes.",
+                    fecha: "jueves, 09:30"
+                },
+                {
+                    name: "Proyecto R",
+                    sala: 13,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un sistema de gestión de inventarios basado en blockchain.",
+                    fecha: "viernes, 15:00"
+                },
+                {
+                    name: "Proyecto S",
+                    sala: 14,
+                    estado: "cerrado",
+                    descripcion: "Investigación en tecnologías de realidad virtual para entrenamiento profesional.",
+                    fecha: "lunes, 10:30"
+                },
+                {
+                    name: "Proyecto T",
+                    sala: 15,
+                    estado: "ocupado",
+                    descripcion: "Diseño de una solución de ciberseguridad para pequeñas y medianas empresas.",
+                    fecha: "martes, 11:30"
+                }
+            ],
+            pisoDos: [
+                {
+                    name: "Proyecto C",
+                    sala: 12,
+                    estado: "cerrado",
+                    descripcion: "Revisión y mejora de sistemas de energía renovable, enfocados en la eficiencia y la reducción de costos.",
+                    fecha: "viernes, 16:00"
+                },
+                {
+                    name: "Proyecto I",
+                    sala: 13,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un sistema de gestión de recursos para pequeñas empresas.",
+                    fecha: "lunes, 10:30"
+                },
+                {
+                    name: "Proyecto J",
+                    sala: 14,
+                    estado: "ocupado",
+                    descripcion: "Implementación de tecnologías blockchain para la seguridad de transacciones.",
+                    fecha: "martes, 11:00"
+                },
+                {
+                    name: "Proyecto K",
+                    sala: 15,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un sistema de seguimiento de proyectos.",
+                    fecha: "miércoles, 12:00"
+                },
+                {
+                    name: "Proyecto L",
+                    sala: 16,
+                    estado: "ocupado",
+                    descripcion: "Investigación en soluciones de movilidad urbana.",
+                    fecha: "jueves, 09:30"
+                },
+                {
+                    name: "Proyecto M",
+                    sala: 17,
+                    estado: "libre",
+                    descripcion: "Diseño de una plataforma para el análisis de datos de sensores.",
+                    fecha: "viernes, 11:30"
+                },
+                {
+                    name: "Proyecto N",
+                    sala: 18,
+                    estado: "ocupado",
+                    descripcion: "Creación de un sistema de monitorización de redes sociales.",
+                    fecha: "lunes, 14:00"
+                },
+                {
+                    name: "Proyecto O",
+                    sala: 19,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un software para la gestión de eventos.",
+                    fecha: "martes, 15:00"
+                },
+                {
+                    name: "Proyecto P",
+                    sala: 20,
+                    estado: "ocupado",
+                    descripcion: "Optimización de procesos de cadena de suministro utilizando análisis predictivo.",
+                    fecha: "miércoles, 16:00"
+                },
+                {
+                    name: "Proyecto Q",
+                    sala: 21,
+                    estado: "libre",
+                    descripcion: "Investigación en tecnologías emergentes para el cuidado de la salud.",
+                    fecha: "jueves, 10:00"
+                },
+                {
+                    name: "Proyecto R",
+                    sala: 22,
+                    estado: "ocupado",
+                    descripcion: "Diseño de una plataforma de colaboración para equipos distribuidos.",
+                    fecha: "viernes, 12:00"
+                },
+                {
+                    name: "Proyecto S",
+                    sala: 23,
+                    estado: "libre",
+                    descripcion: "Desarrollo de un sistema de análisis de comportamiento de usuarios.",
+                    fecha: "lunes, 13:00"
+                },
+                {
+                    name: "Proyecto T",
+                    sala: 24,
+                    estado: "ocupado",
+                    descripcion: "Creación de un software para la gestión de recursos humanos.",
+                    fecha: "martes, 14:00"
+                },
+                {
+                    name: "Proyecto U",
+                    sala: 25,
+                    estado: "libre",
+                    descripcion: "Optimización de algoritmos de búsqueda en bases de datos.",
+                    fecha: "miércoles, 15:00"
+                }
+            ],
+            taller: [
+                {
+                    name: "Proyecto D",
+                    sala: 15,
+                    estado: "ocupado",
+                    descripcion: "Fabricación y prototipado de dispositivos IoT, integrando sensores avanzados para monitoreo ambiental.",
+                    fecha: "miércoles, 09:00"
+                },
+                {
+                    name: "Proyecto K",
+                    sala: 16,
+                    estado: "libre",
+                    descripcion: "Desarrollo de prototipos para tecnología wearable.",
+                    fecha: "lunes, 12:00"
+                },
+                {
+                    name: "Proyecto L",
+                    sala: 17,
+                    estado: "ocupado",
+                    descripcion: "Investigación en robótica para la automatización de tareas repetitivas.",
+                    fecha: "jueves, 10:30"
+                },
+                {
+                    name: "Proyecto M",
+                    sala: 18,
+                    estado: "libre",
+                    descripcion: "Desarrollo de sistemas de energía solar portátiles.",
+                    fecha: "lunes, 11:00"
+                },
+                {
+                    name: "Proyecto N",
+                    sala: 19,
+                    estado: "ocupado",
+                    descripcion: "Creación de dispositivos de monitoreo para entornos industriales.",
+                    fecha: "martes, 12:00"
+                },
+                {
+                    name: "Proyecto O",
+                    sala: 20,
+                    estado: "libre",
+                    descripcion: "Prototipado de equipos para telemetría avanzada.",
+                    fecha: "miércoles, 13:00"
+                },
+                {
+                    name: "Proyecto P",
+                    sala: 21,
+                    estado: "ocupado",
+                    descripcion: "Desarrollo de sensores para agricultura inteligente.",
+                    fecha: "jueves, 14:00"
+                },
+                {
+                    name: "Proyecto Q",
+                    sala: 22,
+                    estado: "libre",
+                    descripcion: "Diseño de sistemas de automatización para procesos de manufactura.",
+                    fecha: "viernes, 09:00"
+                },
+                {
+                    name: "Proyecto R",
+                    sala: 23,
+                    estado: "ocupado",
+                    descripcion: "Creación de dispositivos para el seguimiento de salud en tiempo real.",
+                    fecha: "lunes, 15:00"
+                },
+                {
+                    name: "Proyecto S",
+                    sala: 24,
+                    estado: "libre",
+                    descripcion: "Desarrollo de sistemas de control para robots colaborativos.",
+                    fecha: "martes, 16:00"
+                },
+                {
+                    name: "Proyecto T",
+                    sala: 25,
+                    estado: "ocupado",
+                    descripcion: "Fabricación de dispositivos de realidad aumentada para entrenamiento.",
+                    fecha: "miércoles, 10:00"
+                },
+                {
+                    name: "Proyecto U",
+                    sala: 26,
+                    estado: "libre",
+                    descripcion: "Desarrollo de equipos para medición de parámetros ambientales.",
+                    fecha: "jueves, 11:00"
+                },
+                {
+                    name: "Proyecto V",
+                    sala: 27,
+                    estado: "ocupado",
+                    descripcion: "Creación de prototipos para sistemas de navegación autónoma.",
+                    fecha: "viernes, 12:00"
+                },
+                {
+                    name: "Proyecto W",
+                    sala: 28,
+                    estado: "libre",
+                    descripcion: "Investigación en nuevas tecnologías de impresión 3D.",
+                    fecha: "lunes, 13:30"
+                }
+            ]
+        };
+        estadosSalas.pisoUno.map((stats) => {
+
+            salaSelecionada = document.getElementById("pisoUno_sala"+stats.sala)
+
+            switch(stats.estado){
+                case libre:
+                    salaSelecionada.style.fill = "#9ACC77"
+                break;
+                case ocupado:
+                    salaSelecionada.style.fill = "#F0D442"
+                break;
+                case cerrado:
+                    salaSelecionada.style.fill = "#CC2649"
+                break;
+            }
+        })
+
+        cerrarCardSala()
+
+        function cerrarCardSala(){
+            popUpCardSala.style.display = "none";
+        }
+        function abrirCardSala(numeroSala){
+
+            popUpCardSala.style.display = "block";
+
+            estadosSalas.pisoUno.map((sala) => {
+
+                if (sala.sala == numeroSala) {
+                    
+                    console.log(sala.estado)
+                    
+                    switch(sala.estado){
+                        case libre:
+
+                            cardFuncion.style.background = "#9ACC77";
+                            estadoCardFuncion.innerText = "Sala disponible"
+
+                        break;
+                        case ocupado:
+
+                            cardFuncion.style.background = "#F0D442";
+                            estadoCardFuncion.innerText = "Sala ocupada"
+                        break;
+                        case cerrado:
+                            estadoCardFuncion.innerText = "Sala Cerrada"
+                        break;
+                    }
+                    nombre
+                    ubicacion
+                    descripcion
+                    fecha
+
+                }
+
+            })
+        }
+    </script>
+</body>
+</html>
