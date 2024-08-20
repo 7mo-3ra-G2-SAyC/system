@@ -12,13 +12,13 @@ switch($_GET['agent']){
 
         include_once 'user.php';
 
-        $user = new User();
+        $ = new User();
 
         session_start();
         
         //option es la funcionalidad que queremos utilizar de ese objeto
         switch($_GET['option']){
-            
+
             case 'valid_user':
                 //procesar
             break;
@@ -26,6 +26,51 @@ switch($_GET['agent']){
 
         if(isset($response)){
             $user->printJSON($response);
+        }
+    break;
+
+    case 'cronograma':
+
+        include_once 'Cronograma.php';
+        $cronograma = new Cronograma;
+
+        switch($_GET['option']){
+
+            case 'getFullCronograma':
+                $response = $cronograma->getFullCronograma();
+                break;
+            
+            case 'getByActivityId':
+                $response = $cronograma->getByActivityId($_GET['id_actividad']);
+                break;
+            case 'getActivitiesByDay':
+                $response = $cronograma->getActivitiesByDay($_GET['day']);
+                break;
+            case 'getActivitiesForThisClassroom':
+                $response = $cronograma->getActivitiesForThisClassroom($_GET['classroom']);
+                break;
+
+
+        }
+
+        if(isset($response)){ $cronograma->printJSON($response); }
+
+        break;
+
+    case 'courses':
+        include 'courses.php';
+        $course = new Course();
+        switch ($_GET['option']) {
+            case 'value':
+                $response = $course->getCourseScheduleByDay();
+                break;
+            
+            default:
+                // code...
+                break;
+        }
+        if(isset($response)){
+            $course->printJSON($response);
         }
     break;
 }
