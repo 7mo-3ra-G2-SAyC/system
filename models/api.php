@@ -10,17 +10,25 @@ date_default_timezone_set("America/Argentina/Buenos_Aires");
 switch($_GET['agent']){
     case 'usuarios':
 
-        include_once 'user.php';
+        include_once 'Guia.php';
 
-        $user = new User();
+        $user = new Guia($_GET['ing_carnet'],$_GET['ing_dni']);
 
         session_start();
         
         //option es la funcionalidad que queremos utilizar de ese objeto
         switch($_GET['option']){
-            
             case 'valid_user':
-                //procesar
+                $response=$user->login();
+
+                // si el logueo es valido
+                if(empty($response['error'])){ 
+                    // guarda el objeto en una variable de sesion
+                    $_SESSION['sayc']['guia']=$user; 
+                }
+            break;
+            default:
+                echo json_encode("option esta vacio");
             break;
         }
 

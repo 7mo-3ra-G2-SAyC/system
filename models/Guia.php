@@ -116,6 +116,10 @@
 			return $result;
 			
 		}
+
+		function printJSON($body){
+			echo json_encode($body);
+		}
 	}
 
 	/**
