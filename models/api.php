@@ -10,15 +10,18 @@ date_default_timezone_set("America/Argentina/Buenos_Aires");
 switch($_GET['agent']){
     case 'usuarios':
 
+        // incluye la clase Guia
         include_once 'Guia.php';
-
-        $user = new Guia($_GET['ing_carnet'],$_GET['ing_dni']);
 
         session_start();
         
         //option es la funcionalidad que queremos utilizar de ese objeto
         switch($_GET['option']){
             case 'valid_user':
+                // crea el objeto Guia con el carnet y dni
+                $user = new Guia($_GET['ing_carnet'],$_GET['ing_dni']);
+
+                // verifica el login
                 $response=$user->login();
 
                 // si el logueo es valido
@@ -27,6 +30,16 @@ switch($_GET['agent']){
                     $_SESSION['sayc']['guia']=$user; 
                 }
             break;
+
+            case 'getGuide':
+                    // paso el objeto de la sesion a un variable
+                    $user=$_SESSION['sayc']['guia'];
+
+                    // obtiene la data del guia
+                    $data=$user->getByNroCarnet();
+
+                    $response=$data[0];
+                break;
             default:
                 echo json_encode("option esta vacio");
             break;
