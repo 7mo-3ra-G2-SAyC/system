@@ -42,7 +42,6 @@
 			$this->carnet = $carnet;
 			$this->dni = $dni;
 
-
 		}
 
 		/**
@@ -116,6 +115,10 @@
 
 			return $result;
 			
+		}
+
+		function printJSON($body){
+			echo json_encode($body);
 		}
 	}
 
