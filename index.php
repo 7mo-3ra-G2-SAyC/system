@@ -2,6 +2,9 @@
     
     // incluye la clase Guia
     include_once 'models/Guia.php';
+
+    // incluye la clase Cronograma
+    include_once 'models/Cronograma.php';
     
     // incluye el motor de plantillas
     include_once 'lib/tplengine/TPLEngine.php';
