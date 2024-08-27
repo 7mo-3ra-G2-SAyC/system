@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .botonControlMapa{
+            position: absolute;
+            background-color: #00000060;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            backdrop-filter: blur(2px);
+            opacity: 8;
+            z-index: 1;
+            top: 4px;
+            left: 4px;
+            border-radius: 8px;
+        }
+        .contentBotonControlMapa{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            gap: 15%;
+        }
+        .contentBotonControlMapa span{
+            display: block;
+            position: absolute;
+            width: 70%;
+            height: 8%;
+            background-color: black;
+            border-radius: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 1s;
+        }
+        .contentBotonControlMapa span:nth-child(1){
+            top: 25%;
+        }
+        .contentBotonControlMapa span:nth-child(3){
+            top: 75%;
+        }
+        .contentBotonControlMapa:hover span:nth-child(1){
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    assssss
+    <div class="botonControlMapa">
+        <div class="contentBotonControlMapa" id="botonControlMapa">
+            <span class="bar1" id="bar1"></span>
+            <span class="bar2" id="bar2"></span>
+            <span class="bar3" id="bar3"></span>
+        </div>
+    </div>
+    <script>
+        botonControlMapa.addEventListener('hover',() => {
+            console.log('a')
+        })
+    </script>
+</body>
+</html>
