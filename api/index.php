@@ -10,7 +10,7 @@
 	$request_method = $_SERVER["REQUEST_METHOD"];
 
 	// Captura lo que sigue luego de /api/ en la URL.
-	$urlResult = str_replace('sayc-76fee51f670d.herokuapp.com/api/', '', $_SERVER["REQUEST_URI"]);
+	$urlResult = str_replace('sayc-76fee51f670d.herokuapp.com/api/index.php', '', $_SERVER["REQUEST_URI"]);
 
 	// Se separa el contenido de $urlResult en 2 posiciones (modelo/método).
 	$urlExplode = explode('/', $urlResult);
