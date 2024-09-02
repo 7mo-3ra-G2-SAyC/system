@@ -4,7 +4,7 @@
 
     /**
      * 
-     * Clase para consultar la información del cronograma
+     * Clase to consult information about the schedule.
      * 
      */
     class Cronograma extends DBAbstract{
@@ -18,13 +18,14 @@
 
             foreach($result as $key => $value){
 
-                /**< Pasa el nombre del campo a una variable */
+                // Stores the field name into a variable.
 				$field = $value["Field"];
 				
-				/**< Pasa los nombres de los campos a un vector*/
+                // Stores the fields names into an array.
 				$this->attributes[] = $field;
 
 				/**< pasa como un nuevo atributo el nombre de un campo */
+                // Stores as a new attribute a field name.
 				$this->$field="";
 
             }
@@ -34,16 +35,22 @@
             return $this->attributes;
         }
 
-        function getFullCronograma(){
 
-            $ssql = "SELECT actividades.descripcion AS 'actividad', turnos.descripcion AS 'turno', actividades_categorias.nombre AS 'categoria', aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno";
-            $result = $this->query($ssql);
 
-            if(count($result)==0){ return false; }
+        /**
+         * Gets the full schedule table and replaces the external ID's with the external field content.
+         * @return $result Query result.
+         * 
+         */
+        function getFullSchedule(){
+
+            $result = $this->query("SELECT actividades.descripcion AS 'actividad', turnos.descripcion AS 'turno', actividades_categorias.nombre AS 'categoria', aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno");
 
 			return $result;
 
         }
+
+
 
         function getByActivityId($params){
             $id = $params['id'];
@@ -66,7 +73,7 @@
             return $result;
         }
 
-        function getEstateOfCoursesByCategory($params){
+        function getStateOfCoursesByCategory($params){
             $category = $params['category'];
             $day = $params['day'];
             $result = $this->query("SELECT actividades.duracion, actividades.descanso, cronograma.id_aula FROM cronograma INNER JOIN actividades ON cronograma.id_actividad = actividades.id_actividad INNER JOIN aula_categorias ON aula_categorias.id_aula = cronograma.id_aula WHERE cronograma.fecha = '$day' AND aula_categorias.id_categoria = '$category'");

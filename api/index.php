@@ -44,7 +44,7 @@
 
 	// Verifica si no existe el método.
 	if(!isset($urlExplode[2])){
-		echo json_encode(["errno" => 405, "error" => "La variable metodo no esta definida"]);
+		echo json_encode(["errno" => 405, "error" => "La variable metodo no está definida"]);
 		exit();
 	}
 
