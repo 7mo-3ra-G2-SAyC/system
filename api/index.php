@@ -10,25 +10,24 @@
 	$request_method = $_SERVER["REQUEST_METHOD"];
 
 	// Captura lo que sigue luego de /api/ en la URL.
-	$urlResult = str_replace('sayc-76fee51f670d.herokuapp.com/api/', '', $_SERVER["REQUEST_URI"]);
-	
+	$urlResult = str_replace('/SAyC/system/api/', '', $_SERVER["REQUEST_URI"]);
 
 	// Se separa el contenido de $urlResult en 2 posiciones (modelo/método).
 	$urlExplode = explode('/', $urlResult);
 	// Verifica si el modelo no está especificado.
-	if(!isset($urlExplode[1])){
-		echo json_encode(["errno" => 405, "error" => "La variable modelo no session_start definida"]);
+	if(!isset($urlExplode[0])){
+		echo json_encode(["errno" => 405, "error" => "La variable modelo no está definida"]);
 		exit();
 	}
 
 	// Verifica si la variable modelo está vacía.
-	if($urlExplode[1] == ""){
+	if($urlExplode[0] == ""){
 		echo json_encode(["errno" => 405, "error" => "Falta especificar el nombre de un modelo"]);
 		exit();
 	}
 
 	// Normaliza el valor de la variable modelo (Capitalizado y el resto en minúscula) y lo guarda en una variable.
-	$model = ucfirst(strtolower($urlExplode[1]));
+	$model = ucfirst(strtolower($urlExplode[0]));
 
 	// Verifica si el modelo no existe.
 	if(!file_exists("../models/$model.php")){
@@ -43,19 +42,19 @@
 	$modelObj = new $model();
 
 	// Verifica si no existe el método.
-	if(!isset($urlExplode[2])){
+	if(!isset($urlExplode[1])){
 		echo json_encode(["errno" => 405, "error" => "La variable metodo no está definida"]);
 		exit();
 	}
 
 	// Verifica si el método no tiene valor.
-	if($urlExplode[2] == ""){
+	if($urlExplode[1] == ""){
 		echo json_encode(["errno" => 405, "error" => "Falta especificar el nombre de un metodo"]);
 		exit();
 	}
 
 	// Guarda el nombre del método en una variable para que sea más legible.
-	$method = $urlExplode[2];
+	$method = $urlExplode[1];
 
 	// Verifica si el método no existe dentro del objeto.
 	if(!method_exists($modelObj, $method)){
