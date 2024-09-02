@@ -9,38 +9,18 @@ date_default_timezone_set("America/Argentina/Buenos_Aires");
 //agent seria el objeto que vamos a utilizar
 switch($_GET['agent']){
     case 'usuarios':
-        // incluye la clase Guia
-        include_once 'Guia.php';
+
+        include_once 'user.php';
+
+        $ = new User();
+
         session_start();
         
         //option es la funcionalidad que queremos utilizar de ese objeto
         switch($_GET['option']){
 
             case 'valid_user':
-                // crea el objeto Guia con el carnet y dni
-                $user = new Guia($_GET['ing_carnet'],$_GET['ing_dni']);
-
-                // verifica el login
-                $response=$user->login();
-
-                // si el logueo es valido
-                if(empty($response['error'])){ 
-                    // guarda el objeto en una variable de sesion
-                    $_SESSION['sayc']['guia']=$user; 
-                }
-            break;
-
-            case 'getGuide':
-                    // paso el objeto de la sesion a un variable
-                    $user=$_SESSION['sayc']['guia'];
-
-                    // obtiene la data del guia
-                    $data=$user->getByNroCarnet();
-
-                    $response=$data[0];
-                break;
-            default:
-                echo json_encode("option esta vacio");
+                //procesar
             break;
         }
 
@@ -81,7 +61,7 @@ switch($_GET['agent']){
         include 'courses.php';
         $course = new Course();
         switch ($_GET['option']) {
-            case 'value':
+            case 'getCourseScheduleByDay':
                 $response = $course->getCourseScheduleByDay();
                 break;
             

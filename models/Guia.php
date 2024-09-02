@@ -20,9 +20,13 @@
 		 * basandose en las columnas de la tabla que representa
 		 * 
 		 * */
-		function __construct($carnet, $dni){
+		function __construct(){
 			parent::__construct();
+		}
 
+		function setAttributes($params){
+			$carnet = $params['carnet'];
+			$dni = $params['dni'];
 			$sql = "DESCRIBE guias;";
 
 			$result = $this->query($sql);
@@ -41,9 +45,7 @@
 
 			$this->carnet = $carnet;
 			$this->dni = $dni;
-
 		}
-
 		/**
 		 * 
 		 * Busca al guia por su numero de carnet
@@ -52,7 +54,7 @@
 		 * */
 		function getByNroCarnet(){
 
-			$result = $this->query("SELECT * FROM guias WHERE carnet = '".$this->carnet."'");
+			$result = $this->query("SELECT carnet FROM guias WHERE carnet = '".$this->carnet."'");
 
 			if(count($result)==0){
 				return false;
@@ -77,48 +79,48 @@
 		 * @return array arreglo con el resultado del intento de login
 		 * 
 		 * */
-		function login(){
+		function Login(){
+$result = $this->query("SELECT * FROM guias WHERE dni = ".$this->dni." AND carnet = '".$this->carnet."' ");
 
-			$vector_error = ["error" => "", "errno" => 0];
-
-			// verifica si el guia existe en la db
-			$result = $this->getByNroCarnet();
-
-			// no se encontro el numero de carnet
-			if(!$result){
-				$vector_error["error"] = "No existe el numero de carnet";
-				$vector_error["errno"] = 404;
-
-				return $vector_error;
+			if(count($result)==0){
+				return false;
 			}
+			// $vector_error = ["error" => "", "errno" => 0];
 
-			$result = $result[0];
+			// // verifica si el guia existe en la db
+			// $result = $this->getByNroCarnet();
 
-			// El DNI no es correcto
-			if($result["dni"]!=$this->dni){
-				$vector_error["error"] = "El DNI no es valido";
-				$vector_error["errno"] = 405;
+			// // no se encontro el numero de carnet
+			// if(!$result){
+			// 	$vector_error["error"] = "No existe el numero de carnet";
+			// 	$vector_error["errno"] = 404;
 
-				return $vector_error;
-			}
+			// 	return $vector_error;
+			// }
 
-			// se agrega al arreglo los mensajes de error
-			$result = array_merge($vector_error, $result);
+			// $result = $result[0];
 
-			// aqui deberiamos colocar la autocarga de los atributos de ese usuario
-			//===================
+			// // El DNI no es correcto
+			// if($result["dni"]!=$this->dni){
+			// 	$vector_error["error"] = "El DNI no es valido";
+			// 	$vector_error["errno"] = 405;
 
-			foreach ($this->attributes as $key => $attribute) {
-				$this->$attribute = $result[$attribute];
-			}
+			// 	return $vector_error;
+			// }
+
+			// // se agrega al arreglo los mensajes de error
+			// $result = array_merge($vector_error, $result);
+
+			// // aqui deberiamos colocar la autocarga de los atributos de ese usuario
+			// //===================
+
+			// foreach ($this->attributes as $key => $attribute) {
+			// 	$this->$attribute = $result[$attribute];
+			// }
 
 
 			return $result;
 			
-		}
-
-		function printJSON($body){
-			echo json_encode($body);
 		}
 	}
 
@@ -127,31 +129,31 @@
 	 * Clase para trabajar con muchos usuarios
 	 * 
 	 * */
-	class Guias extends DBAbstract{
+	// class Guias extends DBAbstract{
 
-		/**
-		 * 
-		 * Constructor de la clase
-		 * 
-		 * */
-		function __construct(){
+	// 	/**
+	// 	 * 
+	// 	 * Constructor de la clase
+	// 	 * 
+	// 	 * */
+	// 	function __construct(){
 
-			parent::__construct();
+	// 		parent::__construct();
 
-		}
+	// 	}
 
-		/**
-		 * 
-		 * retorna la cantidad de guias en la tabla de guias
-		 * @return int cantidad de guias en la tabla de guias
-		 * 
-		 * */
-		function getCant(){
+	// 	/**
+	// 	 * 
+	// 	 * retorna la cantidad de guias en la tabla de guias
+	// 	 * @return int cantidad de guias en la tabla de guias
+	// 	 * 
+	// 	 * */
+	// 	function getCant(){
 
-			return count($this->query("SELECT * FROM guias"));
-		}
+	// 		return count($this->query("SELECT * FROM guias"));
+	// 	}
 
-	}
+	// }
 
 
  ?>

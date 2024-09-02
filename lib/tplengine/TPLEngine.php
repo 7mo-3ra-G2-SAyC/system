@@ -70,7 +70,15 @@
             return strpos($this->buffer, $name);
 
         }
-
+        /**
+         * 
+         * Retorna el valor de vista
+         * @return string valor de vista
+         * 
+         * */
+        function getVista(){
+            return $this->buffer;
+        }
         /**
          * 
          * Prints buffer's content on the screen
