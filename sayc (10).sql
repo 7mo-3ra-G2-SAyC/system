@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-08-2024 a las 00:26:15
+-- Tiempo de generación: 02-09-2024 a las 23:19:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -137,7 +137,7 @@ INSERT INTO `aula_categorias` (`id_categoria`, `descripcion`) VALUES
 
 CREATE TABLE `cronograma` (
   `id_actividad` int(11) NOT NULL,
-  `turno` varchar(20) NOT NULL,
+  `id_turno` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `id_aula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -146,10 +146,29 @@ CREATE TABLE `cronograma` (
 -- Volcado de datos para la tabla `cronograma`
 --
 
-INSERT INTO `cronograma` (`id_actividad`, `turno`, `fecha`, `id_aula`) VALUES
-(1, 'tarde', '2024-08-20', 7),
-(1, 'mañana', '2024-08-21', 7),
-(1, 'mañana', '2024-08-22', 7);
+INSERT INTO `cronograma` (`id_actividad`, `id_turno`, `fecha`, `id_aula`) VALUES
+(1, 1, '2024-08-20', 7),
+(1, 2, '2024-08-22', 25);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cronograma_cursos`
+--
+
+CREATE TABLE `cronograma_cursos` (
+  `fecha_hora` datetime NOT NULL,
+  `id_curso` int(11) NOT NULL,
+  `id_actividad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cronograma_cursos`
+--
+
+INSERT INTO `cronograma_cursos` (`fecha_hora`, `id_curso`, `id_actividad`) VALUES
+('2024-08-20 02:25:00', 3, 1),
+('2024-08-20 02:50:00', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -292,6 +311,27 @@ INSERT INTO `talleristas` (`nombre`, `apellido`, `id_tallerista`) VALUES
 ('Luis', 'Martínez', 5),
 ('Laura', 'García', 6);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `turnos`
+--
+
+CREATE TABLE `turnos` (
+  `id_turno` int(11) NOT NULL,
+  `descripcion` varchar(20) DEFAULT NULL,
+  `inicio` time DEFAULT NULL,
+  `fin` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`id_turno`, `descripcion`, `inicio`, `fin`) VALUES
+(1, 'Mañana', '08:00:00', '12:00:00'),
+(2, 'Tarde', '13:00:00', '17:00:00');
+
 --
 -- Índices para tablas volcadas
 --
@@ -327,8 +367,17 @@ ALTER TABLE `aula_categorias`
 -- Indices de la tabla `cronograma`
 --
 ALTER TABLE `cronograma`
-  ADD PRIMARY KEY (`id_aula`,`fecha`,`turno`),
-  ADD KEY `fk_act` (`id_actividad`);
+  ADD PRIMARY KEY (`id_turno`,`fecha`,`id_aula`),
+  ADD KEY `fk_act` (`id_actividad`),
+  ADD KEY `fk_classroom` (`id_aula`);
+
+--
+-- Indices de la tabla `cronograma_cursos`
+--
+ALTER TABLE `cronograma_cursos`
+  ADD PRIMARY KEY (`fecha_hora`,`id_curso`,`id_actividad`),
+  ADD KEY `fk_actividad_curso` (`id_actividad`),
+  ADD KEY `fk_cronograma_curso` (`id_curso`);
 
 --
 -- Indices de la tabla `cursos`
@@ -361,6 +410,12 @@ ALTER TABLE `presentadores`
 --
 ALTER TABLE `talleristas`
   ADD PRIMARY KEY (`id_tallerista`);
+
+--
+-- Indices de la tabla `turnos`
+--
+ALTER TABLE `turnos`
+  ADD PRIMARY KEY (`id_turno`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -415,6 +470,12 @@ ALTER TABLE `talleristas`
   MODIFY `id_tallerista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `turnos`
+--
+ALTER TABLE `turnos`
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -435,8 +496,16 @@ ALTER TABLE `aulas`
 -- Filtros para la tabla `cronograma`
 --
 ALTER TABLE `cronograma`
+  ADD CONSTRAINT `cronograma_ibfk_1` FOREIGN KEY (`id_turno`) REFERENCES `turnos` (`id_turno`),
   ADD CONSTRAINT `fk_act` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
   ADD CONSTRAINT `fk_aula` FOREIGN KEY (`id_aula`) REFERENCES `aulas` (`id_aula`);
+
+--
+-- Filtros para la tabla `cronograma_cursos`
+--
+ALTER TABLE `cronograma_cursos`
+  ADD CONSTRAINT `fk_actividad_curso` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
+  ADD CONSTRAINT `fk_cronograma_curso` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`);
 
 --
 -- Filtros para la tabla `curso_guias`

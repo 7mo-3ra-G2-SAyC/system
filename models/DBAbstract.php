@@ -33,7 +33,7 @@
 		 * */
 		function connect(){
 			// el arroba silencia los errores del objeto
-			$this->db = @new mysqli(HOST, USER, PASS, DB);	
+			$this->db = @new mysqli(HOST, USER, PASS, DB,PORT);	
 
 			// control de errores de conexion a la db
 			if($this->db->connect_errno){
