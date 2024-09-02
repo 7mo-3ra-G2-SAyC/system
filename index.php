@@ -22,6 +22,7 @@
     }   
 
     //contralodores permitidos a los no logueados
+
     $connected_anonymous=['landing', 'login', 'error404'];
     
     // controladores permitidos del Guia
