@@ -12,7 +12,7 @@
 	//echo $_SERVER["REQUEST_URI"];
 
 	// Captura lo que sigue luego de /api/ en la URL.
-	$urlResult = str_replace('sayc-76fee51f670d.herokuapp.com/api/index.php', '', $_SERVER["REQUEST_URI"]);
+	$urlResult = str_replace('/api/', '', $_SERVER["REQUEST_URI"]);
 
 	echo $urlResult;
 	exit();
