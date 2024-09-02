@@ -24,10 +24,10 @@
     }   
 
     //contralodores permitidos a los no logueados
-    $connected_anonymous=['landing','login'];
+    $connected_anonymous=['landing','login','error404'];
     
     // controladores permitidos del Guia
-    $connected_guide=['panel','logout'];
+    $connected_guide=['panel','logout','error404'];
 
     // si inicio sesion
     if (!empty($_SESSION['sayc'])) {
