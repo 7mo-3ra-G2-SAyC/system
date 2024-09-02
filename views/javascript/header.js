@@ -1,6 +1,6 @@
 
-const fetchApi = async(agent,option, method = "GET")=>{
-    var response = await fetch(`models/api.php?agent=${agent}&option=${option}`, {method: `${method}`});
+const fetchApi = async(model, method, params)=>{
+    var response = await fetch(`https://mattprofe.com.ar/alumno/3887/SAYC_2024/system/api/${model}/${method}/?${params}`);
     response = await response.json();
     return response;
 }

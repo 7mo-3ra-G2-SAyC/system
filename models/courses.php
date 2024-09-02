@@ -13,14 +13,7 @@
             parent::__construct();
         }
 
-        /**
-         * encode a string to json format
-         * @param $json strin to format
-         */
-
-        function printJSON($json){
-            echo json_encode($json);
-        }
+    
         /**
          * function to get the schedule of a course for a specific day
          * @param $id_course id of the course to filter
@@ -28,7 +21,10 @@
          * @return an array with information about the schedule
          * --schedule = cronograma
          */
-        function getCourseScheduleByDay($id_course,$day){
-            $result = $this->query("SELECT actividades.descripcion, actividades_categorias.nombre AS 'categoria', CONVERT(cronograma_cursos.fecha_hora, time) AS 'horario' FROM cronograma_cursos INNER JOIN actividades ON cronograma_cursos.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria WHERE cronograma_cursos.id_curso = '$id_course' AND CONVERT(cronograma_cursos.fecha_hora, date) = '$day'");
+        function getCourseScheduleByDay($params){
+            $id_course = $params['id_course'];
+            $day = $params['day'];
+            $result = $this->query("SELECT actividades.descripcion AS 'actividad', actividades_categorias.nombre AS 'categoria', CONVERT(cronograma_cursos.fecha_hora, time) AS 'horario', aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' FROM cronograma_cursos INNER JOIN actividades ON cronograma_cursos.id_actividad = actividades.id_actividad INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria WHERE cronograma_cursos.id_curso = 3 AND CONVERT(cronograma_cursos.fecha_hora, date) = '2024-08-20' GROUP BY cronograma_cursos.fecha_hora");
             return $result;
         }
+    }
