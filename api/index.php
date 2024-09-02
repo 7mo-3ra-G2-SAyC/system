@@ -14,8 +14,8 @@
 	// Captura lo que sigue luego de /api/ en la URL.
 	$urlResult = str_replace('/api/', '', $_SERVER["REQUEST_URI"]);
 
-	echo $urlResult;
-	exit();
+	// echo $urlResult;
+	// exit();
 
 	// Se separa el contenido de $urlResult en 2 posiciones (modelo/método).
 	$urlExplode = explode('/', $urlResult);
