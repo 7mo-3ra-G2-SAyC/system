@@ -1,5 +1,5 @@
 <?php
-
+	header('Access-Control-Allow-Origin: *');
 	// Inicia o continúa la sesión.
 	session_start();
 
