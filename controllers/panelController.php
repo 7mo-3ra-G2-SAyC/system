@@ -1,18 +1,18 @@
 <?php 
-	// pasa el objeto de la sesion a una variable
-	$guide = $_SESSION['sayc']['guia'];
 
 	// inicializoael objeto y carga la vista
 	$tpl = new TPLEngine('panel');
 
-	// variables a reemplazar en la vista
+	// carga la vista del header
+	$header = new TPLEngine('header');
+
+	// carga la variables de reempleazo
 	$vars=[
-		"NOMBRE_GUIA" => $guide->nombre,
+		'HEADER' => $header->getVista()
 	];
 
-	// reemplaza las variables en la vista
+	// reemlpaza las variables de la vista
 	$tpl->setVars($vars);
-
 	// imprime la vista
 	$tpl->print();
  ?>

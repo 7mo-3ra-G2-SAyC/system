@@ -54,6 +54,12 @@
 		 * */
 		function getByNroCarnet(){
 
+			// si la sesion esta iniciada
+			if (!empty($_SESSION['sayc'])) {
+				// carga los atributos con la variable de sesion
+				$this->setAttributes($_SESSION['sayc']);
+			}
+
 			$result = $this->query("SELECT * FROM guias WHERE carnet = '".$this->carnet."'");
 
 			if(count($result)==0){
@@ -114,7 +120,8 @@
 			foreach ($this->attributes as $key => $attribute) {
 				$this->$attribute = $result[$attribute];
 			}
-			session_start();
+
+			// guarda los datos del guia logueado
 			$_SESSION['sayc']['dni']=$this->dni;
 			$_SESSION['sayc']['carnet']=$this->carnet;
 			
