@@ -114,7 +114,7 @@
 			foreach ($this->attributes as $key => $attribute) {
 				$this->$attribute = $result[$attribute];
 			}
-
+			session_start();
 			$_SESSION['sayc']['dni']=$this->dni;
 			$_SESSION['sayc']['carnet']=$this->carnet;
 			
