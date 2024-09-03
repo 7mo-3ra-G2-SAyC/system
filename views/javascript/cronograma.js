@@ -3,7 +3,7 @@ cronTable = document.getElementById("table-cronograma");
 
 async function setTableContent(){
 
-    const content = await fetchApi('cronograma', 'getFullCronograma');
+    const content = await fetchApi('cronograma', 'getFullCronograma', 'cronogramaView');
 
     content.forEach(({nombre, turno, fecha}) => {
 
