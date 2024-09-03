@@ -12,7 +12,7 @@ document.querySelector("#btn-login").addEventListener("click", element => {
         // si el logueo es invalido
         if(response.error){
             // muestra mensaje de error
-            document.getElementById('msg_error').innerHTML=response.error
+            document.getElementById('msg-error').innerHTML=response.error
         }
         // si el logueo es valido
         else{
