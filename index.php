@@ -23,30 +23,30 @@
 
     //contralodores permitidos a los no logueados
 
-    $connected_anonymous=['landing', 'login', 'error404','panel'];
+    $connected_anonymous = ['landing', 'login'];
     
     // controladores permitidos del Guia
-    $connected_guide=['panel', 'logout', 'error404'];
+    $connected_guide = ['panel', 'logout', 'error404'];
 
     // si inicio sesion
     if (!empty($_SESSION['sayc'])) {
         // carga los controladores no permitidos
-        $controller_test=$connected_anonymous;
+        $forbidden_sections = $connected_anonymous;
 
         // seccion por defecto
-        $defualt_section="panel";
+        $defualt_section = "panel";
     }
     // si no inicio sesion
     else{
         // carga los controladores no permitidos
-        $controller_test=$connected_guide;
+        $forbidden_sections = $connected_guide;
 
         // seccion por defecto 
-        $defualt_section="landing";
+        $defualt_section = "landing";
     }
 
     // analiza los controladores permitidos
-    foreach ($controller_test as $key => $value) {
+    foreach ($forbidden_sections as $key => $value) {
         // si coincide con un controlador que no deberia utilizar
         if ($value == $section) {
             $section = $defualt_section;
