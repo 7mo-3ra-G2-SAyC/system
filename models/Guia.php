@@ -45,7 +45,7 @@
 
 			$this->carnet = $carnet;
 			$this->dni = $dni;
-		}
+		} 
 		/**
 		 * 
 		 * Busca al guia por su numero de carnet
@@ -54,7 +54,13 @@
 		 * */
 		function getByNroCarnet(){
 
-			$result = $this->query("SELECT carnet FROM guias WHERE carnet = '".$this->carnet."'");
+			// si la sesion esta iniciada
+			if (!empty($_SESSION['sayc'])) {
+				// carga los atributos con la variable de sesion
+				$this->setAttributes($_SESSION['sayc']);
+			}
+
+			$result = $this->query("SELECT * FROM guias WHERE carnet = '".$this->carnet."'");
 
 			if(count($result)==0){
 				return false;
@@ -79,48 +85,47 @@
 		 * @return array arreglo con el resultado del intento de login
 		 * 
 		 * */
-		function Login(){
-$result = $this->query("SELECT * FROM guias WHERE dni = ".$this->dni." AND carnet = '".$this->carnet."' ");
+		function login($params){
+			$this->setAttributes($params);
 
-			if(count($result)==0){
-				return false;
+			$vector_error = ["error" => "", "errno" => 0];
+
+			// verifica si el guia existe en la db
+			$result = $this->getByNroCarnet();
+
+			// no se encontro el numero de carnet
+			if(!$result){
+				$vector_error["error"] = "No existe el numero de carnet";
+				$vector_error["errno"] = 404;
+
+				return $vector_error;
 			}
-			// $vector_error = ["error" => "", "errno" => 0];
 
-			// // verifica si el guia existe en la db
-			// $result = $this->getByNroCarnet();
+			$result = $result[0];
 
-			// // no se encontro el numero de carnet
-			// if(!$result){
-			// 	$vector_error["error"] = "No existe el numero de carnet";
-			// 	$vector_error["errno"] = 404;
+			// El DNI no es correcto
+			if($result["dni"]!=$this->dni){
+				$vector_error["error"] = "El DNI no es valido";
+				$vector_error["errno"] = 405;
 
-			// 	return $vector_error;
-			// }
+				return $vector_error;
+			}
 
-			// $result = $result[0];
+			// se agrega al arreglo los mensajes de error
+			$result = array_merge($vector_error, $result);
 
-			// // El DNI no es correcto
-			// if($result["dni"]!=$this->dni){
-			// 	$vector_error["error"] = "El DNI no es valido";
-			// 	$vector_error["errno"] = 405;
+			// aqui deberiamos colocar la autocarga de los atributos de ese usuario
+			//===================
 
-			// 	return $vector_error;
-			// }
+			foreach ($this->attributes as $key => $attribute) {
+				$this->$attribute = $result[$attribute];
+			}
 
-			// // se agrega al arreglo los mensajes de error
-			// $result = array_merge($vector_error, $result);
-
-			// // aqui deberiamos colocar la autocarga de los atributos de ese usuario
-			// //===================
-
-			// foreach ($this->attributes as $key => $attribute) {
-			// 	$this->$attribute = $result[$attribute];
-			// }
-
-
-			return $result;
+			// guarda los datos del guia logueado
+			$_SESSION['sayc']['dni']=$this->dni;
+			$_SESSION['sayc']['carnet']=$this->carnet;
 			
+			return $result;
 		}
 	}
 
