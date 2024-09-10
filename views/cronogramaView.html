@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma</title>
-    <link rel="stylesheet" href="views/css/styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Horarios</a></li>
-                <li><a href="#">Mapa</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+@extern('header')
+
+    <link rel="stylesheet" href="views/css/cronograma.css">
+    
+    <div id="cronograma-content">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="static/logo.png" alt="Logo">
         </div>
         <h1>Cronograma</h1>
         <div class="filter">
@@ -27,20 +13,19 @@
                 <!-- Agregar más opciones según los cursos disponibles -->
             </select>
         </div>
-        <table>
+        <table id="table-cronograma">
             <thead>
                 <tr>
                     <th>Actividad</th>
-                    <th>Curso</th>
-                    <th>Horario</th>
-                    <th>Duración</th>
+                    <th>Turno</th>
+                    <th>Categoría</th>
+                    <th>Aula</th>
+                    <th>Piso</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
-            </tbody>
+            <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
         </table>
-    </main>
-    <script src="views/javascript/cronograma.js"></script>
+    </div>
+    <script type="module" src="views/javascript/cronograma.js"></script>
 </body>
 </html>
