@@ -1,35 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ECEEDF;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #3B4D4B;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
-
-header nav ul li {
-    display: inline;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
 .logo img {
     display: block;
     margin: 0 auto;

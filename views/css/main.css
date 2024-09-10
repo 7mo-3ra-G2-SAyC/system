@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background-color: #ECEEDF;
+}
+
+#header{
+    padding: 1rem;
+
+    background-color: #3B4D4B;
+}
+
+#header ul{
+    display: flex;
+    justify-content: space-evenly;
+
+    list-style: none;
+}
+
+#header ul li a{
+    color: white;
+    text-decoration: none;
+
+    transition: ease-in-out 150ms;
+}
+
+#header ul li a:hover{
+    color: black;
+}

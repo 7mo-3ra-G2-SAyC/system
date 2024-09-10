@@ -1,25 +1,18 @@
 
-cronTable = document.getElementById("table-cronograma");
+const cronTable = document.getElementById("table-cronograma");
 
 async function setTableContent(){
 
-    const content = await fetchApi('cronograma', 'getFullCronograma', 'cronogramaView');
+    const content = await fetchApi("cronograma", "getFullSchedule");
 
-    content.forEach(({nombre, turno, fecha}) => {
+    content.forEach( row => {
 
         let tr = document.createElement("tr");
+        let descriptions = Object.values(row);
 
-        let tdName = document.createElement("td");
-        let tdTurno = document.createElement("td");
-        let tdFecha = document.createElement("td");
-
-        tdName.innerText = nombre;
-        tdTurno.innerText = turno;
-        tdFecha.innerText = fecha;
-
-        tr.appendChild(tdName);
-        tr.appendChild(tdTurno);
-        tr.appendChild(tdFecha);
+        descriptions.forEach( description => {
+            tr.innerHTML += `<td>${description}</td>`;
+        });
 
         cronTable.appendChild(tr);
 
