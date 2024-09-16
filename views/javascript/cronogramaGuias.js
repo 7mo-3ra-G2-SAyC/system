@@ -1,22 +1,28 @@
-// Ejemplo de cómo podrías cargar datos dinámicamente si los tuvieras
-const data = [
-    { actividad: "Visita guiada al museo", curso: "Historia del Arte", horario: "10:00 AM", duracion: "2 horas" },
-    { actividad: "Tour por la ciudad", curso: "Historia Local", horario: "1:00 PM", duracion: "3 horas" },
-    // Agrega más actividades aquí
-];
+const cronTable = document.querySelector("#table-cronograma tbody");
 
-function populateTable() {
-    const tbody = document.querySelector("table tbody");
-    data.forEach(item => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.actividad}</td>
-            <td>${item.curso}</td>
-            <td>${item.horario}</td>
-            <td>${item.duracion}</td>
-        `;
-        tbody.appendChild(row);
+async function setTableContent(){
+
+    const content = await fetchApi("cronograma", "getFullSchedule");
+
+    content.forEach( row => {
+
+        let tr = document.createElement("tr");
+        let descriptions = Object.values(row);
+
+        descriptions.forEach( description => {
+            tr.innerHTML += `<td>${description}</td>`;
+        });
+
+        cronTable.appendChild(tr);
+
     });
 }
 
-document.addEventListener("DOMContentLoaded", populateTable);
+document.addEventListener("DOMContentLoaded", async e => {
+
+    await setTableContent();
+
+    document.querySelector(".loading-screen").style.opacity = "0%";
+    document.querySelector(".loading-screen").style.visibility = "hidden";
+
+});

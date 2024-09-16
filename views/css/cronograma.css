@@ -1,0 +1,41 @@
+.logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #4E6B5B;
+}
+
+.filter {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+table thead {
+    background-color: #4E6B5B;
+    color: white;
+}
+
+table th, table td {
+    padding: 1rem;
+    text-align: center;
+    
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #bdbdbd;
+}
