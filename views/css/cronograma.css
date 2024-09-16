@@ -31,11 +31,11 @@ table thead {
 }
 
 table th, table td {
-    padding: 15px;
+    padding: 1rem;
     text-align: center;
-    border: 1px solid #ccc;
+    
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #F3F3F3;
+    background-color: #bdbdbd;
 }

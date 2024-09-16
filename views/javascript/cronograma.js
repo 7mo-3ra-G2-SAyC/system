@@ -1,5 +1,4 @@
-
-const cronTable = document.getElementById("table-cronograma");
+const cronTable = document.querySelector("#table-cronograma tbody");
 
 async function setTableContent(){
 
@@ -19,4 +18,11 @@ async function setTableContent(){
     });
 }
 
-setTableContent();
+document.addEventListener("DOMContentLoaded", async e => {
+
+    await setTableContent();
+
+    document.querySelector(".loading-screen").style.opacity = "0%";
+    document.querySelector(".loading-screen").style.visibility = "hidden";
+
+});

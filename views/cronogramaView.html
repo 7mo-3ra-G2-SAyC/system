@@ -1,8 +1,20 @@
 @extern('header')
 
-    <link rel="stylesheet" href="views/css/cronograma.css">
+    <link rel="stylesheet" href="views/css/cronograma.css{{PROJECT_MODE}}">
+
+    <div class="loading-screen">
+        <h3>Cargando horarios...</h3>
+    </div>
+
+    <nav id="header">
+        <ul>
+            <li><a href="/panel">Inicio</a></li>
+            <li><a href="/cronograma">Horarios</a></li>
+            <li><a href="/mapa">Mapa</a></li>
+        </ul>
+    </nav>
     
-    <div id="cronograma-content">
+    <div id="container">
         <div class="logo">
             <img src="static/logo.png" alt="Logo">
         </div>
@@ -23,9 +35,12 @@
                     <th>Piso</th>
                 </tr>
             </thead>
-            <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
+            <tbody>
+                <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
+            </tbody>
         </table>
     </div>
-    <script type="module" src="views/javascript/cronograma.js"></script>
-</body>
-</html>
+
+    <script type="module" src="views/javascript/cronograma.js{{PROJECT_MODE}}"></script>
+
+@extern('footer')

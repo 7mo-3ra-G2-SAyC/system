@@ -1,5 +1,20 @@
 @extern('header')
-    <div id="cronogramaGuias-content">
+
+    <link rel="stylesheet" href="views/css/cronograma.css{{PROJECT_MODE}}">
+
+    <div class="loading-screen">
+        <h3>Cargando horarios...</h3>
+    </div>
+
+    <nav id="header">
+        <ul>
+            <li><a href="/panel">Inicio</a></li>
+            <li><a href="/cronograma">Horarios</a></li>
+            <li><a href="/mapa">Mapa</a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
@@ -7,13 +22,14 @@
         <div class="sub-title">
             <p>Recorrido curso:</p>
         </div>
-        <table>
+        <table id="table-cronograma">
             <thead>
                 <tr>
                     <th>Actividad</th>
-                    <th>Curso</th>
-                    <th>Horario</th>
-                    <th>Duración</th>
+                    <th>Turno</th>
+                    <th>Categoría</th>
+                    <th>Aula</th>
+                    <th>Piso</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +37,7 @@
             </tbody>
         </table>
     </div>
-    <script src="views/javascript/cronogramaGuias.js"></script>
-</body>
-</html>
+
+    <script src="views/javascript/cronogramaGuias.js{{PROJECT_MODE}}"></script>
+
+@extern('footer')
