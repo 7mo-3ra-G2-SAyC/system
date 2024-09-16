@@ -34,6 +34,20 @@
             // Loads external views
             $this->loadExtern();
 
+            $env_vars = [
+                "PROJECT_NAME" => $_ENV['PROJECT_NAME'],
+				"PROJECT_DESCRIPTION" => $_ENV['PROJECT_DESCRIPTION'],
+				"PROJECT_AUTHOR" => $_ENV['PROJECT_AUTHOR'],
+				"PROJECT_AUTHOR_CONTACT" => $_ENV['PROJECT_AUTHOR_CONTACT'],
+				"PROJECT_URL" => $_ENV['PROJECT_URL'],
+				"PROJECT_KEYWORDS" => $_ENV['PROJECT_KEYWORDS'],
+				"PROJECT_MODE" => $_ENV['PROJECT_MODE'],
+
+                "PROJECT_SECTION" => ucfirst($view)
+            ];
+
+            $this->setVars($env_vars);
+
         }
 
         /**

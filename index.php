@@ -1,5 +1,8 @@
 <?php   
     
+    // Includes environment variables;
+    include_once 'env.php';
+
     // incluye el motor de plantillas
     include_once 'lib/tplengine/TPLEngine.php';
 
@@ -11,8 +14,14 @@
 
     // If slug exists in GET
     if(isset($_GET['slug'])){
-        // Section is changed to slug's value
-        $section = $_GET['slug'];
+
+        // If slug is not an empty string
+        if($_GET['slug'] !== ""){
+
+            // Section is changed to slug's value
+            $section = $_GET['slug'];
+
+        }
     }
 
     // If the file does not exist
@@ -26,7 +35,7 @@
     $connected_anonymous = ['landing', 'login'];
     
     // controladores permitidos del Guia
-    $connected_guide = ['panel', 'logout', 'error404'];
+    $connected_guide = ['panel', 'logout', 'cronogramaGuias'];
 
     // si inicio sesion
     if (!empty($_SESSION['sayc'])) {

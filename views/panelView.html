@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Panel</title>
-</head>
-<body>
-	{{HEADER}}
-	<h2>Bienvenido <span id="name_guide"></span>!</h2>
-	<a href="logout">Cerrar Sesion</a>
+@extern('header')
+
+	<div class="loading-screen">
+		<h3>Cargando panel...</h3>
+	</div>
+
+	<nav id="header">
+		<ul>
+			<li><a href="/panel">Inicio</a></li>
+			<li><a href="/cronograma">Horarios</a></li>
+			<li><a href="/mapa">Mapa</a></li>
+		</ul>
+	</nav>
+	
+	<div id="container">
+		<h2>Bienvenido <span id="name_guide"></span>!</h2>
+		<a href="logout">Cerrar Sesion</a>
+	</div>
 
 	<script src="views/javascript/panel.js"></script>
-</body>
-</html>
+
+@extern('footer')
