@@ -79,6 +79,32 @@
             $result = $this->query("SELECT actividades.duracion, actividades.descanso, cronograma.id_aula, aula_categorias.descripcion FROM cronograma INNER JOIN actividades ON cronograma.id_actividad = actividades.id_actividad INNER JOIN aulas ON aulas.id_aula = cronograma.id_aula JOIN aula_categorias ON aula_categorias.id_categoria = aulas.id_categoria WHERE cronograma.fecha = '$day' AND aula_categorias.descripcion LIKE '$category'");
             return $result;
         }
+
+        /**
+         * Function to get all activities of the SAyc/expo of a specific day and specific floor
+         * @param $day day to filter
+         * @return array associative array with activities of this day and floor
+         */
+        function getCronogramaByCategory($params){  
+
+            // si los parametros no fueron declarados
+            if(count($params)==0){
+                echo json_encode([ 
+                    'errno' => 408 , 
+                    'error' => "Falta definir los parametros"
+                ]);
+                exit();
+            }
+
+            $category = $params['category'];
+            $day = !isset($params['day'])? date("Y-m-d") : $params['day'];
+
+            $sql="SELECT actividades.nombre as actividad, actividades.descripcion, actividades_categorias.nombre as categoria, actividades.duracion, actividades.descanso, cronograma.id_aula, aulas.nombre as aula, aula_categorias.descripcion as piso FROM cronograma INNER JOIN actividades ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades.id_categoria = actividades_categorias.id_categoria INNER JOIN aulas ON aulas.id_aula = cronograma.id_aula INNER JOIN aula_categorias ON aulas.id_categoria = aula_categorias.id_categoria WHERE cronograma.fecha = '$day' AND aula_categorias.id_categoria = '$category'";
+
+            $result = $this->query($sql);
+
+            return $result;
+        }
         /**
          * function to get the activities that would be done in a specific classroom
          * @param $id_class id of te class to filter

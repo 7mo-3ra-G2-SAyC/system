@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    background-color: #E5EAD4;
+    min-height: 100vh;
+}
+.navbar {
+    background-color: #334F53;
+    overflow: hidden;
+}
+
+.navbar_logo{
+    width: 2.5rem;
+}
+
+.navbar a {
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1.3rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+} */
+.navbar .navbar__title {
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #f2f2f2;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+}
+.navbar .navbar__links {
+    float: right;
+}
+.navbar .navbar__links a {
+    float: left;
+}
+
+.landing_logo {
+    width: 18rem;
+    padding: 3rem;
+}
+
+.landing__title{
+    display: inline;
+    position: absolute;
+    left: 37.438rem;
+    top: 7.5rem;
+    font-size: 5rem;
+    text-decoration: underline;
+    color: #334F53;
+}
+
+#window{
+    background-color: #45936C;
+    padding: 2.5rem;
+}
+
+#window__descripcion .title{
+    text-align: end;
+}
+
+.title{
+    margin-right: 15rem;
+    font-size: 4rem;
+    color: #E5EAD4;
+    margin-left: 2rem;
+}
+
+.description{
+    width: 65%;
+    font-size: 1.8rem;
+    word-spacing: 0.4rem;
+    line-height: 2.4rem;
+    color: #FFF;
+}
+
+#window__objetivo #container__description{
+    display: flex;
+    justify-content: end;
+}
+
+#window__aplicacion > h2:nth-child(1) {
+    color: #334F53; 
+    text-align: end;
+}
+
+#texto{
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+#texto h2{
+    margin: 0 auto;
+}
+
+#texto div{
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+#window__cronograma{
+    background-color: #45936C;
+    margin-bottom: 3.15rem;
+    padding: 2rem;
+    display: flex;
+}
+
+#window__mapeo{
+    background-color: #45936C;
+    margin-bottom: 3.15rem;
+    padding: 2rem;
+    display: flex;
+}
+
+/* #container__btn{
+    overflow: hidden;
+} */
+
+.btn{
+    border: none;
+    border-radius: 1rem;
+    background-color: #9ACC77;
+    color: #334F53;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+#footer {
+    background-color: #334F53;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+}
+
+#contacto {
+    display: flex;
+    width: 100%;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.instagram_logo {
+    vertical-align: middle;
+}
+
+#contacto span {
+    margin: 1rem;
+}
+
+#window__organizacion > h2:nth-child(1) {
+text-align: end;
+}
+  
+.gridBox{
+    width: 100%;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 15% 25% 20% auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+.gridBox .caja1{
+    background-color: #E5EAD4;
+}
+.gridBox .caja2{
+    background-color: #9ACC77;
+}
+.gridBox .caja3{
+    background-color: #45936C;
+}

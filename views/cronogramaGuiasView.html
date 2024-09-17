@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma Guías</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Horarios</a></li>
-                <li><a href="#">Mapa</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+@extern('header')
+
+    <link rel="stylesheet" href="views/css/cronograma.css{{PROJECT_MODE}}">
+
+    <div class="loading-screen">
+        <h3>Cargando horarios...</h3>
+    </div>
+
+    <nav id="header">
+        <ul>
+            <li><a href="/panel">Inicio</a></li>
+            <li><a href="/cronograma">Horarios</a></li>
+            <li><a href="/mapa">Mapa</a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
@@ -24,20 +22,22 @@
         <div class="sub-title">
             <p>Recorrido curso:</p>
         </div>
-        <table>
+        <table id="table-cronograma">
             <thead>
                 <tr>
                     <th>Actividad</th>
-                    <th>Curso</th>
-                    <th>Horario</th>
-                    <th>Duración</th>
+                    <th>Turno</th>
+                    <th>Categoría</th>
+                    <th>Aula</th>
+                    <th>Piso</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
             </tbody>
         </table>
-    </main>
-    <script src="javascript/cronogramaGuias.js"></script>
-</body>
-</html>
+    </div>
+
+    <script src="views/javascript/cronogramaGuias.js{{PROJECT_MODE}}"></script>
+
+@extern('footer')
