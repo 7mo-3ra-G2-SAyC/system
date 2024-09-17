@@ -1,31 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sayc</title>
+@extern('header')
 
-	<link rel="stylesheet" href="static/css/landing.css">
-</head>
-<body>
+	<link rel="stylesheet" href="views/css/landing.css">
 
+	<header>
+		<div class="navbar">
+			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
+			<div class="navbar__links">
+				<a href="landing">Inicio</a>
+				<a href="horarios">Horarios</a>
+				<a href="mapa">Mapa</a>
+			</div>
+		</div>
 
-	<div id="wrapper">
-		<header>
-            <div class="navbar">
-				<div></div>
-                <div class="navbar__title"><img src="static/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
-                <div class="navbar__links">
-                    <a href="landing">Inicio</a>
-                    <a href="horarios">Horarios</a>
-                    <a href="mapa">Mapa</a>
-                </div>
-            </div>
+	</header>
 
-		</header>
+	<div id="content">
 
 		<div id="landing">
-			<img src="static/img/logo_sayc.png" class="landing_logo" alt="logo_sayc">
+			<img src="views/img/logo_sayc.png" class="landing_logo" alt="logo_sayc">
 			<h1 class="landing__title">SAyC</h1>
 		</div>
 		<div class="gridBox">
@@ -75,20 +67,20 @@
 			</div>
 		</div>
 
-		<div class="gridBox">
+		<!-- <div class="gridBox">
 			<div class="caja3"></div>
 			<div class="caja3"></div>
 			<div class="caja3"></div>
 			<div class="caja3"></div>
-			<!-- <div class="caja3"></div>
+			<div class="caja3"></div>
 			<div class="caja2"></div>
 			<div class="caja3"></div>
 			<div class="caja3"></div>
 			<div class="caja2"></div>
 			<div class="caja1"></div>
 			<div class="caja2"></div>
-			<div class="caja2"></div> -->
-		</div>
+			<div class="caja2"></div>
+		</div> -->
 	
 		<div id="window__aplicacion">
 			<h2 class="title">Aplicación SAyC</h2>
@@ -150,23 +142,6 @@
 			
 		</div>
 
-		<footer>
-			
-			<div id="footer">
-				<div><img src="static/img/logo_sayc.png" class="landing_logo" alt="logo_sayc"></div>
-				<div id="contacto">
-					<span>
-					<img width="70" height="70" src="static/img/logo_instagram.svg" class="instagram_logo" alt="logo_instagram">
-					Contacto</span>
-					<span>
-					<img width="50" height="50" src="static/img/logo_facebook.svg" class="instagram_logo" alt="facebook_logo">
-					@sayc.tortuguitas</span>
-					<span>Comunidad Educativa “Roberto Arlt”</span>
-				</div>
-			</div>
-		</footer>
-
 	</div>
 	
-</body>
-</html>
+@extern('footer')

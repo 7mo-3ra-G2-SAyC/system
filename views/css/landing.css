@@ -86,9 +86,14 @@ body {
     justify-content: end;
 }
 
+#window__aplicacion {
+    padding: 3rem 0;
+}
+
 #window__aplicacion > h2:nth-child(1) {
     color: #334F53; 
     text-align: end;
+
 }
 
 #texto{
