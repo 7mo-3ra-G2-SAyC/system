@@ -69,14 +69,14 @@
          */
         function getActivitiesByDay($params){
             $day = $params['day'];
-            $result = $this->query("SELECT actividades.descripcion AS 'actividad', turnos.descripcion AS 'turno', actividades_categorias.nombre AS 'categoria', aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno WHERE cronograma.fecha = '$day'");
+            $result = $this->query("SELECT actividades.descripcion AS 'actividad', actividades.duracion, actividades.descanso, turnos.descripcion AS 'turno', actividades_categorias.nombre AS 'categoria', aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno WHERE cronograma.fecha = '$day'");
             return $result;
         }
 
-        function getStateOfCoursesByCategory($params){
+        function getCronogramaByCategory($params){
             $category = $params['category'];
             $day = $params['day'];
-            $result = $this->query("SELECT actividades.duracion, actividades.descanso, cronograma.id_aula FROM cronograma INNER JOIN actividades ON cronograma.id_actividad = actividades.id_actividad INNER JOIN aula_categorias ON aula_categorias.id_aula = cronograma.id_aula WHERE cronograma.fecha = '$day' AND aula_categorias.id_categoria = '$category'");
+            $result = $this->query("SELECT actividades.duracion, actividades.descanso, cronograma.id_aula, aula_categorias.descripcion FROM cronograma INNER JOIN actividades ON cronograma.id_actividad = actividades.id_actividad INNER JOIN aulas ON aulas.id_aula = cronograma.id_aula JOIN aula_categorias ON aula_categorias.id_categoria = aulas.id_categoria WHERE cronograma.fecha = '$day' AND aula_categorias.descripcion LIKE '$category'");
             return $result;
         }
 
@@ -113,7 +113,7 @@
 
         function getActivitiesForThisClassroom($params){
             $id_class = $params['id_class'];
-             $result = $this->query("SELECT actividades.nombre AS 'activity_name', actividades_categorias.nombre AS 'activity_category', turnos.inicio, turnos.fin, aulas.nombre, aulas.capacidad, aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN actividades_categorias ON actividades.id_categoria = actividades_categorias.id_categoria INNER JOIN cronograma ON actividades.id_actividad = cronograma.id_actividad INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria = aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno WHERE cronograma.id_aula = '$id_class' ");
+             $result = $this->query("SELECT actividades.duracion, actividades.descanso, actividades.nombre AS 'activity_name', actividades_categorias.nombre AS 'activity_category', turnos.inicio, turnos.fin, aulas.nombre, aulas.capacidad, aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN actividades_categorias ON actividades.id_categoria = actividades_categorias.id_categoria INNER JOIN cronograma ON actividades.id_actividad = cronograma.id_actividad INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria = aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno WHERE cronograma.id_aula = '$id_class' ");
             return $result;
         }
     }
