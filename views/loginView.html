@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Login</title>
-</head>
-<body>
-	{{HEADER}}
-	<form method="post">
-		<div id="msg-error">
-		</div>
-		<label for="carnet">Carnet</label>
-		<input type="number" id="carn" name="ing_carnet" min="0" required>
-		<label for="dni">DNI</label>
-		<input type="number" id="dni" name="ing_dni" min="0" required>
-		<input type="button" id="btn-login" value="Ingresar">
-	</form>
-	
-</body>
+@extern('header')
+
+	<nav id="header">
+		<ul>
+			<li><a href="/panel">Inicio</a></li>
+			<li><a href="/cronograma">Horarios</a></li>
+			<li><a href="/mapa">Mapa</a></li>
+		</ul>
+	</nav>
+
+	<div id="container">
+
+		<form method="post">
+			<div id="msg-error">
+			</div>
+			<label for="carnet">Carnet</label>
+			<input type="number" id="carn" name="ing_carnet" min="0" required>
+			<label for="dni">DNI</label>
+			<input type="number" id="dni" name="ing_dni" min="0" required>
+			<input type="button" id="btn-login" value="Ingresar">
+		</form>
+
+	</div>
+
 	<script type="module" src="views/javascript/login.js"></script>
 
-</html>
+@extern('footer')
