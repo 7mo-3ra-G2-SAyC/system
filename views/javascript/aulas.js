@@ -1,26 +1,26 @@
-let param = new URLSearchParams(location.search);
-const id = param.get('id_class');
+// let param = new URLSearchParams(location.search);
+// const id = param.get('id_class');
 
-const data = await fetchApi('Cronograma','getActivitiesForThisClassroom',`id_class=${id}`);
-				if(data.errno == 200){
+// const data = await fetchApi('Cronograma','getActivitiesForThisClassroom',`id_class=${id}`);
+// 				if(data.errno == 200){
 
-					// Recorre el listado de usuarios fila por fila
-					let inicio = "08:20:00";
-											console.log(data);
+// 					// Recorre el listado de usuarios fila por fila
+// 					let inicio = "08:20:00";
+// 											console.log(data);
 
-					// data.forEach( row => {
-					// 	let duracion = data.duracion+data.descanso;
-					// 	let hora = {"inicio" => inicio}
-					// 	row = array_merge(row, hora);
-					// 	addRowListado(row);
-					// 	inicio = inicio+duracion;
+// 					// data.forEach( row => {
+// 					// 	let duracion = data.duracion+data.descanso;
+// 					// 	let hora = {"inicio" => inicio}
+// 					// 	row = array_merge(row, hora);
+// 					// 	addRowListado(row);
+// 					// 	inicio = inicio+duracion;
 
-					// })
+// 					// })
 					
 
-				}
+// 				}
 
-			
+	console.log("hola")		
 		/**
 	 	 * 
 	 	 * @brief Agrega una fila dentro de la tabla
