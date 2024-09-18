@@ -73,13 +73,6 @@
             return $result;
         }
 
-        function getCronogramaByCategory($params){
-            $category = $params['category'];
-            $day = $params['day'];
-            $result = $this->query("SELECT actividades.duracion, actividades.descanso, cronograma.id_aula, aula_categorias.descripcion FROM cronograma INNER JOIN actividades ON cronograma.id_actividad = actividades.id_actividad INNER JOIN aulas ON aulas.id_aula = cronograma.id_aula JOIN aula_categorias ON aula_categorias.id_categoria = aulas.id_categoria WHERE cronograma.fecha = '$day' AND aula_categorias.descripcion LIKE '$category'");
-            return $result;
-        }
-
         /**
          * Function to get all activities of the SAyc/expo of a specific day and specific floor
          * @param $day day to filter
@@ -88,12 +81,18 @@
         function getCronogramaByCategory($params){  
 
             // si los parametros no fueron declarados
-            if(count($params)==0){
-                echo json_encode([ 
-                    'errno' => 408 , 
-                    'error' => "Falta definir los parametros"
-                ]);
-                exit();
+            if (!isset($params['category'])) {
+                return [ 
+                    'errno' => 400 , 
+                    'error' => "Falta definir la variable category"
+                ];
+            }
+
+            if($params['category']==''){
+                return [ 
+                    'errno' => 401 , 
+                    'error' => "Falta especificar la categoria"
+                ];
             }
 
             $category = $params['category'];
