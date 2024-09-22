@@ -2,7 +2,7 @@
 
     $tpl = new TPLEngine('aula');
 
-    $asd = new Cronograma();
+    $asd = new Cronograma;
 
     $tpl->print();
 
