@@ -8,5 +8,5 @@
 	$guide->logout();
 
 	// redirigue a landing
-	header("Location:/landing");
+	header("Location: ./landing");
  ?>
