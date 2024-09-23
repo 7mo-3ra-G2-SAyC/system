@@ -1,18 +1,17 @@
 
-document.querySelector("#btn-login").addEventListener("click", element => {
+form_login.addEventListener("submit", e => {
+    e.preventDefault()
 
-    element.preventDefault()
+    const form = new URLSearchParams(Object.fromEntries(new FormData(e.target))).toString()
 
-    let carnet = document.querySelector("#carn").value
-    let dni = document.querySelector("#dni").value
-
-    fetchApi('guia','login',`carnet=${carnet}&dni=${dni}`).then(response=>{
+    fetchApi('guia','login',`${form}`).then(response=>{
         
         console.log(response)
         // si el logueo es invalido
         if(response.error){
             // muestra mensaje de error
-            document.getElementById('msg-error').innerHTML=response.error
+            msg_error.innerHTML=response.error
+            msg_error.style.display="block"
         }
         // si el logueo es valido
         else{
