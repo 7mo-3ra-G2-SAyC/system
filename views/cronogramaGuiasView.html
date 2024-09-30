@@ -1,54 +1,52 @@
 @extern('header')
 
     <link rel="stylesheet" href="views/css/cronogramaGuias.css{{PROJECT_MODE}}">
+    <link rel="stylesheet" href="views/css/landing.css">
 
     <div class="loading-screen">
         <h3>Cargando horarios...</h3>
     </div>
 
-    <nav id="header">
-        <ul>
-            <li><a href="/panel">Inicio</a></li>
-            <li><a href="/cronograma">Horarios</a></li>
-            <li><a href="/mapa">Mapa</a></li>
-        </ul>
-    </nav>
+    <header>
+		<div class="navbar">
+			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
+			<div class="navbar__links">
+				<a href="landing">Inicio</a>
+				<a href="cronogramaGuias">Horarios</a>
+				<a href="mapa">Mapa</a>
+				<a href="logout">Cerrar Sesión</a>
+			</div>
+		</div>
+
+	</header>
 
     <div id="container">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
+        <div class="cronograma-title">
+            <h1>Cronograma Guías</h1>
+            <h4>Recorrido curso:</h4>
+        </div>        
+        <div class="filter">
+            <select class="cronograma-select">
+                <option value="todos">Todos los cursos</option>
+                <!-- Agregar más opciones según los cursos disponibles -->
+            </select>
         </div>
-        <h1>Cronograma Guías</h1>
-        <div class="sub-title">
-            <p>Recorrido curso:</p>
+        <div class="table-scroll">
+            <table id="table-cronograma" border="1">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Turno</th>
+                        <th>Categoría</th>
+                        <th>Aula</th>
+                        <th>Piso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
+                </tbody>
+            </table>    
         </div>
-        <table class="table-cronograma actual">
-            <thead>
-                <tr>
-                    <th>Actividad</th>
-                    <th>Turno</th>
-                    <th>Aula</th>
-                    <th>Ubicación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
-            </tbody>
-        </table>
-
-        <table class="table-cronograma next">
-            <thead>
-                <tr>
-                    <th>Actividad</th>
-                    <th>Turno</th>
-                    <th>Aula</th>
-                    <th>Ubicación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
-            </tbody>
-        </table>
     </div>
 
     <script src="views/javascript/cronogramaGuias.js{{PROJECT_MODE}}"></script>

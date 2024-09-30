@@ -1,4 +1,4 @@
-const cronTable = document.querySelector(".table-cronograma.actual tbody");
+const cronTable = document.querySelector("#table-cronograma tbody");
 
 async function setTableContent(){
 

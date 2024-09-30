@@ -25,10 +25,10 @@
 
 
 	/* Environment variables for database connection */
-	$_ENV["HOST"] = "4-9.h.filess.io";
-	$_ENV["USER"] = "sayc_indicateup";
-	$_ENV["PASS"] = "c02f06672bec69ad391f682bf321b7bb7adbe16a";
-	$_ENV["DB"] = "sayc_indicateup";
+	$_ENV["HOST"] = "zgv.h.filess.io";
+	$_ENV["USER"] = "sayc_mainlytiny";
+	$_ENV["PASS"] = "d039c619472498315599f2099b8d2b251becc12d";
+	$_ENV["DB"] = "sayc_mainlytiny";
 	$_ENV["PORT"] = 3307;
 
 ?>

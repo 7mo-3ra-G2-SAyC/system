@@ -1,11 +1,26 @@
 .logo img {
     display: block;
     margin: 0 auto;
+    margin-top: 1rem;
+    height: 250px;
 }
 
 h1 {
+    color: #334F53;
     text-align: center;
-    color: #4E6B5B;
+    font-size: 3rem;
+}
+
+h4{
+    color: #334F53;
+}
+
+.cronograma-title{
+    padding: 1rem;
+}
+
+.cronograma-title h1{
+    text-align: left;
 }
 
 .filter {
@@ -13,16 +28,38 @@ h1 {
     margin: 20px 0;
 }
 
-.filter select {
+/* Elimina la flecha por defecto del select */
+.cronograma-select::-ms-expand{
+    display: none;
+}
+.cronograma-select{
+    border-radius: 5px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-image: url(../img/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    padding-right: 25px;
+}
+
+
+
+.table-scroll{
+    width: 100%;
+    overflow-x: auto;
 }
 
 table {
     width: 80%;
-    margin: 0 auto;
     border-collapse: collapse;
     background-color: white;
+    margin: 0 auto;
 }
 
 @media (width < 550px) {
@@ -44,16 +81,24 @@ table {
 }
 
 table thead {
-    background-color: #4E6B5B;
+    background-color: #45936C;
+    font-weight: bold;
+    font-size: 1.3rem;
     color: white;
 }
 
 table th, table td {
-    padding: 8px 4px;
+    padding: 1rem;
     text-align: center;
-    
+    white-space: nowrap;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #bdbdbd;
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 800px) {
+    .table-scroll{
+        padding: 0 .5rem;
+    }
 }
