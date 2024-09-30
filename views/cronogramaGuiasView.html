@@ -1,6 +1,6 @@
 @extern('header')
 
-    <link rel="stylesheet" href="views/css/cronograma.css{{PROJECT_MODE}}">
+    <link rel="stylesheet" href="views/css/cronogramaGuias.css{{PROJECT_MODE}}">
 
     <div class="loading-screen">
         <h3>Cargando horarios...</h3>
@@ -22,14 +22,27 @@
         <div class="sub-title">
             <p>Recorrido curso:</p>
         </div>
-        <table id="table-cronograma">
+        <table class="table-cronograma actual">
             <thead>
                 <tr>
                     <th>Actividad</th>
                     <th>Turno</th>
-                    <th>Categoría</th>
                     <th>Aula</th>
-                    <th>Piso</th>
+                    <th>Ubicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
+            </tbody>
+        </table>
+
+        <table class="table-cronograma next">
+            <thead>
+                <tr>
+                    <th>Actividad</th>
+                    <th>Turno</th>
+                    <th>Aula</th>
+                    <th>Ubicación</th>
                 </tr>
             </thead>
             <tbody>

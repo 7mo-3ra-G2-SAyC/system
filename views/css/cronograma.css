@@ -25,13 +25,31 @@ table {
     background-color: white;
 }
 
+@media (width < 550px) {
+    table{
+        font-size: 0.8rem;
+    }
+}
+
+@media (width < 340px) {
+    table{
+        font-size: 0.6rem;
+    }
+}
+
+@media (width < 280px) {
+    table{
+        font-size: 0.5rem;
+    }
+}
+
 table thead {
     background-color: #4E6B5B;
     color: white;
 }
 
 table th, table td {
-    padding: 1rem;
+    padding: 8px 4px;
     text-align: center;
     
 }

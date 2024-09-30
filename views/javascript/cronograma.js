@@ -4,6 +4,8 @@ async function setTableContent(){
 
     const content = await fetchApi("cronograma", "getFullSchedule");
 
+    console.log(content);
+
     content.forEach( row => {
 
         let tr = document.createElement("tr");
