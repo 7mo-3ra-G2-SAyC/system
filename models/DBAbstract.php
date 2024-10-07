@@ -15,6 +15,8 @@
 		private static $instance = null;
 		public $db;
 
+
+
 		/**
 		 * 
 		 * Constructor de la clase ejecuta el metodo de conexión a la DB
@@ -22,9 +24,9 @@
 		 * */
 		function __construct(){
 
-			$this->connect();
-
 		}
+
+
 
 		/**
 		 * 
@@ -43,6 +45,8 @@
 			}
 		}
 
+
+
 		/**
 		 * 
 		 * DML -> SELECT
@@ -51,7 +55,7 @@
 		 * */
 		function query($sql){
 
-			// se fuerza a que genere otra conexion si no esta activa
+			// Generates a new Database connection
 			$this->connect();			
 
 			$response = $this->db->query($sql);
@@ -67,16 +71,36 @@
 
 			switch ($dml) {
 				case 'SELECT':
+
 				case 'DESCRIBE':
+
 				case 'CALL': // se agrego para que no tire error al loguearse
-						return $response->fetch_all(MYSQLI_ASSOC);
+					return $response->fetch_all(MYSQLI_ASSOC);
 					break;
 				
 				default:
-						return true;
+					return true;
 					break;
 			}
+
+			// Closes Database connection
+			$this->disconnect();
+
 		}
+
+
+
+		/**
+		 * 
+		 * Disconnects the user from the Database
+		 * 
+		 */
+		function disconnect(){
+
+			$this->db->close();
+
+		}
+
 	}
 
 
