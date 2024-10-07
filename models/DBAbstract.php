@@ -55,16 +55,25 @@
 		 * */
 		function query($sql){
 
-			// Generates a new Database connection
-			$this->connect();			
+			if(isset($_SESSION["queries"][$sql])){
+				return $_SESSION["queries"][$sql];
+			}
+
+
+			$this->connect();
 
 			$response = $this->db->query($sql);
+
+
+			$_SESSION["queries"][$sql] = $response->fetch_all(MYSQLI_ASSOC);
 			
 			// control de errores en la query
 			if($this->db->errno){
 				echo "Ocurrio un error: ".$this->db->error;
 				exit();
 			}
+
+			$this->disconnect();
 
 			// obtiene la primer palabra de la query
 			$dml = strstr($sql, " ", true);
@@ -82,9 +91,6 @@
 					return true;
 					break;
 			}
-
-			// Closes Database connection
-			$this->disconnect();
 
 		}
 
