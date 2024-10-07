@@ -1,7 +1,7 @@
  <?php
-    define('HOST', '4-9.h.filess.io');
-    define('USER', 'sayc_indicateup');
-    define('PASS', 'c02f06672bec69ad391f682bf321b7bb7adbe16a');
-    define('DB', 'sayc_indicateup');
+    define('HOST', 'zgv.h.filess.io');
+    define('USER', 'sayc_mainlytiny');
+    define('PASS', 'd039c619472498315599f2099b8d2b251becc12d');
+    define('DB', 'sayc_mainlytiny');
     define('PORT', 3307);
  ?>

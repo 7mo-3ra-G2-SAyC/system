@@ -1,16 +1,149 @@
 @extern('header')
 
-	<nav id="header">
-		<ul>
-			<li><a href="/panel">Inicio</a></li>
-			<li><a href="/cronograma">Horarios</a></li>
-			<li><a href="/mapa">Mapa</a></li>
-		</ul>
-	</nav>
+	<link rel="stylesheet" href="views/css/landing.css">
 
-	<div id="container">
-		<h2>Esto es landing. Sayc</h2>
-		<a href="login">Ingresar</a>
+	<header>
+		<div class="navbar">
+			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
+			<div class="navbar__links">
+				<a href="landing">Inicio</a>
+				<a href="cronograma">Horarios</a>
+				<a href="mapa">Mapa</a>
+			</div>
+		</div>
+
+	</header>
+
+	<div id="content">
+
+		<div id="landing">
+			<img src="views/img/logo_sayc.png" class="landing_logo" alt="logo_sayc">
+			<div id="landing__title__container">
+				<h1 class="landing__title">SAyC</h1>
+			</div>
+		</div>
+		<div class="gridBox">
+			<div class="caja1"></div>
+			<div class="caja1"></div>
+			<div class="caja1"></div>
+			<div class="caja2"></div>
+			<div class="caja2"></div>
+			<div class="caja1"></div>
+			<div class="caja2"></div>
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+			<div class="caja2"></div>
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+		</div>
+		<div id="window">
+
+			<!-- <div class="cardWindows">
+				<h2 class="title">¿Qué es SAyC?</h2>
+				<div class="descripcionContent">
+					<h3 class="descripcion"></h3>
+					<div class="icono">
+						<h2 class="numero">1</h2>
+						<div class="icono"></div>
+					</div>
+				</div>
+			</div> -->
+			<div id="window__descripcion">
+				<h2 class="title">¿Qué es SAyC?</h2>
+				<div id="container__description">
+					<h3 class="description">La Semana de las Artes y las Ciencias es un evento anual en nuestro colegio donde los alumnos tienen la oportunidad de mostrar sus proyectos y habilidades en diversas modalidades, incluyendo Arte, Sociales, Economía, Informática y Alimentos.</h3>
+				</div>
+			</div>
+
+			<div id="window__objetivo">
+				<h2 class="title">Objetivos</h2>
+				<div id="container__description">
+					<h3 class="description">El objetivo de la SAyC es demostrar lo aprendido mediante proyectos, actuaciones, talleres, entre otras actividades. Los alumnos, junto con los profesores, organizan y llevan a cabo estas actividades durante tres días.</h3>
+				</div>
+			</div>
+			<div id="window__organizacion">
+				<h2 class="title">Organización</h2>
+				<div id="container__description">
+					<h3 class="description">Para garantizar un desarrollo ordenado del evento, se asignan dos guías identificados por un carnet y una remera naranja a cada curso. Se brinda una planilla con horarios y se utiliza todo el espacio disponible en la escuela para albergar las actividades.</h3>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="gridBox">
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+			<div class="caja2"></div>
+			<div class="caja3"></div>
+			<div class="caja3"></div>
+			<div class="caja2"></div>
+			<div class="caja1"></div>
+			<div class="caja2"></div>
+			<div class="caja2"></div>
+		</div> -->
+	
+		<div id="window__aplicacion">
+			<h2 class="title">Aplicación SAyC</h2>
+		</div>
+
+		<div id="window__mapeo">
+			
+			<svg width="365" height="400" viewBox="0 0 365 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="365" height="400" fill="#E5EAD4"/>
+				<path d="M139.781 182.162H114.466V206.323H139.781V182.162Z" fill="#45936C"/>
+				<path d="M250.534 182.162H225.219V206.323H250.534V182.162Z" fill="#45936C"/>
+				<path d="M213.617 182.162H188.302V206.323H213.617V182.162Z" fill="#45936C"/>
+				<path d="M139.781 219.911H114.466V244.071H139.781V219.911Z" fill="#45936C"/>
+				<path d="M213.617 219.911H188.302V244.071H213.617V219.911Z" fill="#45936C"/>
+				<path d="M176.699 219.911H151.385V244.071H176.699V219.911Z" fill="#45936C"/>
+				<path d="M250.534 257.659H225.219V281.819H250.534V257.659Z" fill="#45936C"/>
+				<path d="M213.617 257.659H188.302V281.819H213.617V257.659Z" fill="#45936C"/>
+				<path d="M176.699 257.659H151.385V281.819H176.699V257.659Z" fill="#45936C"/>
+				<path d="M273.686 102.603H253.1V121.439C253.1 128.467 247.033 134.183 239.576 134.183H212.697C205.24 134.183 199.173 128.467 199.173 121.439V102.603H165.791V121.262C165.791 128.388 159.657 134.183 152.117 134.183H125.537C117.997 134.183 111.863 128.388 111.863 121.262V102.603H91.2775C77.8909 102.603 67 112.903 67 125.562V296.609C67 309.268 77.8909 319.568 91.2775 319.568H273.686C287.093 319.568 298 309.268 298 296.609V125.562C298 112.903 287.093 102.603 273.686 102.603ZM280.596 296.163C280.596 300.228 277.735 302.957 273.476 302.957H91.5237C87.2649 302.957 84.4036 300.228 84.4036 296.163V161.025H280.596V296.163Z" fill="#45936C"/>
+				<path d="M125.545 125.138H152.109C154.359 125.138 156.189 123.404 156.189 121.271V86.1972C156.189 80.8319 151.577 76.467 145.907 76.467H131.748C126.078 76.467 121.465 80.8315 121.465 86.1972V121.271C121.465 123.404 123.295 125.138 125.545 125.138Z" fill="#45936C"/>
+				<path d="M212.697 125.138H239.576C241.739 125.138 243.498 123.47 243.498 121.422V86.0477C243.498 80.7655 238.957 76.467 233.373 76.467H218.899C213.316 76.467 208.775 80.7655 208.775 86.0477V121.422C208.775 123.47 210.534 125.138 212.697 125.138Z" fill="#45936C"/>
+			</svg>	
+			<div id="texto">
+				<h2 class="title">Cronograma</h2>
+					
+				<div id="container__description">
+					<h3 class="description"><li>Horarios y detalles de todas las actividades programadas.</li></h3>
+				</div>
+				<div id="container__btn">
+					<button class="btn">Ver Cronograma
+						<svg width="34" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 10H31M31 10L23 2M31 10L23 17.5" stroke="#334F53" stroke-width="4"/>
+						</svg>	
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="window__mapeo">
+			
+			<svg width="365" height="400" viewBox="0 0 365 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="365" height="400" fill="#E5EAD4"/>
+				<path d="M183 131.25H183.111M149.75 290.5L83.25 256.375V108.5L105.417 119.875M149.75 290.5L216.25 256.375M149.75 290.5V222.25M216.25 256.375L282.75 290.5V142.625L260.583 131.25M216.25 256.375V222.25M216.25 133.525C216.25 153.628 199.625 169.925 183 188.125C166.375 169.925 149.75 153.628 149.75 133.525C149.75 113.422 164.636 97.125 183 97.125C201.364 97.125 216.25 113.422 216.25 133.525Z" stroke="#45936C" stroke-width="18.0833" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			<div id="texto"> 
+				<h2 class="title">Mapeo Digital</h2> 
+				<div id="container__description">
+					<h3 class="description"><li>Mapeo de la escuela con los salones disponibles,sus capacidades y eventos en tiempo real.</li></h3>
+				</div>
+				<div id="container__btn">
+					<button class="btn">Ver mapa
+						<svg width="30" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 10H31M31 10L23 2M31 10L23 17.5" stroke="#334F53" stroke-width="4"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+			
+			
+		</div>
+
 	</div>
-
+	
 @extern('footer')
