@@ -55,17 +55,15 @@
 		 * */
 		function query($sql){
 
-			if(isset($_SESSION["queries"][$sql])){
-				return $_SESSION["queries"][$sql];
+			if(isset($_SESSION["sayc"]["queries"][$sql])){
+				return $_SESSION["sayc"]["queries"][$sql];
 			}
-
 
 			$this->connect();
 
 			$response = $this->db->query($sql);
 
-
-			$_SESSION["queries"][$sql] = $response->fetch_all(MYSQLI_ASSOC);
+			$_SESSION["sayc"]["queries"][$sql] = $response->fetch_all(MYSQLI_ASSOC);
 			
 			// control de errores en la query
 			if($this->db->errno){
@@ -73,7 +71,6 @@
 				exit();
 			}
 
-			$this->disconnect();
 
 			// obtiene la primer palabra de la query
 			$dml = strstr($sql, " ", true);
@@ -84,7 +81,10 @@
 				case 'DESCRIBE':
 
 				case 'CALL': // se agrego para que no tire error al loguearse
-					return $response->fetch_all(MYSQLI_ASSOC);
+
+					$this->disconnect();
+
+					return $_SESSION["sayc"]["queries"][$sql];
 					break;
 				
 				default:
