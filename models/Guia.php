@@ -15,7 +15,7 @@
 	class Guia extends DBAbstract{
 
 
-		
+
 		/**
 		 * 
 		 * Crea el objeto y crea de forma automática los atributos
@@ -62,8 +62,8 @@
 				$carnet = $params["carnet"];
 			}
 
-			if(isset($_SESSION["sayc"]["carnet"])){
-				$carnet = $_SESSION["sayc"]["carnet"];
+			if(isset($_SESSION["sayc"]["user"]["carnet"])){
+				$carnet = $_SESSION["sayc"]["user"]["carnet"];
 			}
 
 			$result = $this->query("SELECT * FROM guias WHERE carnet = '$carnet'");
@@ -122,9 +122,9 @@
 			// se agrega al arreglo los mensajes de error
 			$result = array_merge($vector_error, $result);
 
-			// guarda los datos del guia logueado
-			$_SESSION['sayc']['dni'] = $dni;
-			$_SESSION['sayc']['carnet'] = $carnet;
+			// guarda los dato del guia logueado
+			$_SESSION['sayc']['user']['dni'] = $dni;
+			$_SESSION['sayc']['user']['carnet'] = $carnet;
 			
 			return $result;
 		}
