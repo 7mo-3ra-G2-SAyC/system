@@ -8,9 +8,9 @@
     </div> 
 
     <header>
-		<div class="navbar">
-			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
-			<div class="navbar__links">
+		<div id="header">
+			<div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
+			<div id="header_links">
 				<a href="landing">Inicio</a>
 				<a href="cronograma">Horarios</a>
 				<a href="mapa">Mapa</a>
@@ -19,16 +19,20 @@
 	</header>
     
     <div id="container">
+
         <div class="logo">
             <img src="views/img/logo_sayc.png" alt="Logo">
         </div>
+
         <h1>Cronograma</h1>
+
         <div class="filter">
             <select class="cronograma-select">
                 <option value="todos">Día 1</option>
                 <!-- Agregar más opciones según los cursos disponibles -->
             </select>
         </div>
+
         <div class="table-scroll">
             <table id="table-cronograma" border="1">
                 <thead>
