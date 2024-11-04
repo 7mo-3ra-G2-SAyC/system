@@ -29,7 +29,24 @@
 			}
 
             // Loads view's content into buffer
-            $this->buffer = file_get_contents("views/".$vista."View.html");
+            $this->buffer = file_get_contents("views/".$view."View.html");
+
+            // Loads external views
+            $this->loadExtern();
+
+            $env_vars = [
+                "PROJECT_NAME" => $_ENV['PROJECT_NAME'],
+				"PROJECT_DESCRIPTION" => $_ENV['PROJECT_DESCRIPTION'],
+				"PROJECT_AUTHOR" => $_ENV['PROJECT_AUTHOR'],
+				"PROJECT_AUTHOR_CONTACT" => $_ENV['PROJECT_AUTHOR_CONTACT'],
+				"PROJECT_URL" => $_ENV['PROJECT_URL'],
+				"PROJECT_KEYWORDS" => $_ENV['PROJECT_KEYWORDS'],
+				"PROJECT_MODE" => $_ENV['PROJECT_MODE'],
+
+                "PROJECT_SECTION" => ucfirst($view)
+            ];
+
+            $this->setVars($env_vars);
 
         }
 
@@ -70,6 +87,53 @@
             return strpos($this->buffer, $name);
 
         }
+        /**
+         * 
+         * Retorna el valor de vista
+         * @return string valor de vista
+         * 
+         * */
+        function getVista(){
+            return $this->buffer;
+        }
+
+
+
+        /**
+         * 
+         * 
+         * 
+         */
+        private function loadExtern(){
+
+            // REGEX Pattern
+            $search_pattern = "/@extern\(['\"]([a-zA-Z0-9_]+)['\"]\)/";
+
+            // Seeks all pattern coincidences inside the buffer.
+            preg_match_all($search_pattern, $this->buffer, $ocurrences_list);
+
+            foreach ($ocurrences_list[1] as $key => $file_extern) {
+                
+                // @extern to be seeked and then replaced
+                $needle_extern = $ocurrences_list[0][$key];
+
+                // If the external file does not exist
+                if(!file_exists("views/$file_extern.html")){
+                    echo "No se encontró el archivo externo <b>$file_extern</b>";
+                    exit();
+                }
+
+                // Gets the external file content
+                $buffer_extern = file_get_contents("views/$file_extern.html");
+
+                // Replaces the external call inside the buffer with the extern file content
+                $this->buffer = str_replace($needle_extern, $buffer_extern, $this->buffer);
+
+            }
+
+        }
+
+
 
         /**
          * 

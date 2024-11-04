@@ -1,0 +1,27 @@
+@extern('header')
+
+	<link rel="stylesheet" href="views/css/landing.css">
+	<div class="loading-screen">
+		<h3>Cargando panel...</h3>
+	</div>
+
+	<header>
+		<div class="navbar">
+			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
+			<div class="navbar__links">
+				<a href="landing">Inicio</a>
+				<a href="cronogramaGuias">Horarios</a>
+				<a href="mapa">Mapa</a>
+				<a href="logout">Cerrar Sesión</a>
+			</div>
+		</div>
+
+	</header>
+	
+	<div id="container">
+		<h1>Bienvenido <span id="name_guide"></span>!</h1>
+	</div>
+
+	<script src="views/javascript/panel.js"></script>
+
+@extern('footer')
