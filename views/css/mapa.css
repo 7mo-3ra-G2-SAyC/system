@@ -1,43 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
-*{padding: 0;margin: 0;box-sizing: border-box;}
 
-body{
-    height: 100%;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: "Zen Kaku Gothic Antique", sans-serif;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
 }
-header{
-    background-color: cornflowerblue;
-    height: 100px;
-}
-footer{
-    background-color: forestgreen;
-    height: 100px;
-    width: 100%;
-    bottom: 0;
-}
-.mapa{
+
+.mapa {
     background-color: #e5ead4;
     flex: max-content;
     height: 100%;
     position: relative;
+
+    h2 {
+        position: relative;
+        font-size: 48px;
+        left: 75px;
+    }
+
+    .contentMap {
+        display: flex;
+        height: fit-content;
+        align-items: stretch;
+        justify-content: space-between;
+        padding: 24px;
+        position: relative;
+    }
+
+    .map {
+        position: relative;
+        background-color: burlywood;
+        width: 100%;
+        height: 700px;
+        flex: 1;
+        overflow: hidden;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #pasillo {
+            fill: #868686c9;
+        }
+
+        #escalera {
+            fill: rgba(0, 128, 0, 0.726);
+        }
+    }
 }
-.mapa h2{
-    position: relative;
-    font-size: 48px;
-    left: 75px;
-}
-.contentMap{
-    display: flex;
-    height: fit-content;
-    align-items: stretch;
-    justify-content: space-between;
-    padding: 24px;
-    position: relative;
-}
-.botonController{
+
+.botonController {
     background-color: #00000060;
     width: 50px;
     height: 50px;
@@ -49,41 +70,50 @@ footer{
     z-index: 5;
     top: 5px;
     left: 5px;
+
+    div {
+        background-color: black;
+        width: 60%;
+        height: 3px;
+        position: absolute;
+        border-radius: 50px;
+        top: 50%;
+        transition: 300ms;
+        transform: translateY(-50%);
+
+        &.bar1 {
+            top: 25%;
+        }
+
+        &.bar3 {
+            top: 75%;
+        }
+    }
 }
-.maper{
+
+.maper {
     position: relative;
+
+    .control {
+        .panel {
+            position: absolute;
+            z-index: 1;
+            top: 60px;
+            left: -400px;
+            transition: 150ms;
+        }
+    }
 }
-.maper .control .panel{
-    position: absolute;
-    z-index: 1;
-    top: 60px;
-    left: -400px;
-    transition: 150ms;
-}
-.botonController div{
-    background-color: black;
-    width: 60%;
-    height: 3px;
-    position: absolute;
-    border-radius: 50px;
-    top: 50%;
-    transition: 300ms;
-    transform: translateY(-50%);
-}
-.botonController .bar1{
-    top: 25%;
-}
-.botonController .bar3{
-    top: 75%;
-}
-.controles{
+
+.controles {
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 100px 26px 0 26px;
     display: none;
 }
-.mapController{
+
+.mapController {
     display: grid;
     grid-template-columns: 60px auto;
     justify-items: stretch;
@@ -97,46 +127,84 @@ footer{
     transition: 150ms;
     user-select: none;
     background-color: #00000060;
+
+    &:hover {
+        transform: scale(1.05);
+        background-color: #387758;
+        box-shadow: inset 0px 0px 5px 1px #33333379;
+        cursor: pointer;
+    }
+
+    &.mapControllerSelect {
+        background-color: #6d9c4b;
+    }
+
+    svg {
+        height: 40px;
+    }
+
+    span {
+        color: #dbdbdb;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: end;
+    }
 }
-.mapController:hover{
-    transform: scale(1.05);
-    background-color: #387758;     
-    box-shadow: inset 0px 0px 5px 1px #33333379;
-    cursor: pointer;     
-}
-.mapControllerSelect{
-    background-color: #6d9c4b;
-}
-.mapController svg{
-    height: 40px;
-}
-.mapController span{
-    color: #dbdbdb;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: end;
-}
+
 .plantaBajaSpan .piso1,
 .piso1Span .piso2,
 .piso2Span .piso3,
-.tallerSpan .potiMini{
+.tallerSpan .potiMini {
     fill: #888;
 }
-.map{
-    position: relative;
-    background-color: burlywood;
-    width: 100%;
-    height: 700px;
-    flex: 1;
-    overflow: hidden;
-}
-.map svg{
-    width: 100%;
-    height: 100%;
-}
-#pasillo{
-    fill: #868686c9;
-}
-#escalera{
-    fill: rgba(0, 128, 0, 0.726);
+
+.smokeCardFuncion{
+    background-color: #00000060;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .cardFuncion{
+        position: relative;
+        width: 60%;
+        padding: 16px;
+        border-radius: 16px;
+
+        .cerrar{
+            position: absolute;
+            right: 16px;
+            font-size: 28px;
+            color: #ff3333;
+        }
+
+        .estadoSala{
+            color: #040D61;
+            font-size: 24px;
+        }
+
+        .titulo{
+            color: #040D61;
+            font-size: 30px;
+
+            h3{
+                margin: 0;
+            }
+        }
+
+        .nextFuncion{
+            background-color: #000;
+            color: #fff;
+            font-weight: 600;
+            width: fit-content;
+            border-radius: 100px;
+            padding: 8px 16px;
+            margin-top: 16px;
+        }
+    }
+
+
 }
