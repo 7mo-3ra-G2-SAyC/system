@@ -11,6 +11,7 @@
     flex: max-content;
     height: 100%;
     position: relative;
+    scrollbar-width: thin;
 
     h2 {
         position: relative;
@@ -28,6 +29,7 @@
     }
 
     .map {
+        padding: 2rem;
         position: relative;
         background-color: burlywood;
         width: 100%;
