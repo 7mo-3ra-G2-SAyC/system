@@ -6,13 +6,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
 .mapa {
     background-color: #e5ead4;
     flex: max-content;

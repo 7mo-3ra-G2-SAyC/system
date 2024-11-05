@@ -3,33 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
-    <template id="cardFuncionTemplate">
-        <div class="smokeCardFuncion" id="popUpCardSala">
-            <div class="cardFuncion" id="cardFuncion">
-                <div class="cerrar" id="cerrarCard">
-                    <i class="fa-regular fa-circle-xmark"></i>
-                </div>
-                <div class="estadoSala">
-                    <h4 id="estadoCardFuncion"></h4>
-                </div>
-                <div class="titulo">
-                    <h3 id="tituloCardFuncion"></h3>
-                </div>
-                <div class="ubicacion">
-                    <h4 id="ubicacionCardFuncion"></h4>
-                </div>
-                <div class="descripcion">
-                    <p id="descripcionCardFuncion"></p>
-                </div>
-                <div class="nextFuncion">
-                    <p id="nextFuncionCardFuncion"></p>
-                </div>
-                <i id="iconoCardFuncion"></i>
-            </div>
-        </div>
-    </template>
-
+    
     <header>
 		<div id="header">
 			<div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
@@ -40,9 +14,34 @@
 			</div>
 		</div>
 	</header>
-
-    <div id="container">
     
+    <div id="content">
+        <template id="cardFuncionTemplate">
+            <div class="smokeCardFuncion" id="popUpCardSala">
+                <div class="cardFuncion" id="cardFuncion">
+                    <div class="cerrar" id="cerrarCard">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
+                    <div class="estadoSala">
+                        <h4 id="estadoCardFuncion"></h4>
+                    </div>
+                    <div class="titulo">
+                        <h3 id="tituloCardFuncion"></h3>
+                    </div>
+                    <div class="ubicacion">
+                        <h4 id="ubicacionCardFuncion"></h4>
+                    </div>
+                    <div class="descripcion">
+                        <p id="descripcionCardFuncion"></p>
+                    </div>
+                    <div class="nextFuncion">
+                        <p id="nextFuncionCardFuncion"></p>
+                    </div>
+                    <i id="iconoCardFuncion"></i>
+                </div>
+            </div>
+        </template>
+        
         <section class="mapa">
             <h2>Mapa</h2>
                 <div class="maper">
@@ -125,8 +124,6 @@
         })
 
     </script>
-
-    <script src="views/javascript/mapa.js" ></script>
-
+    <script src="./javascript/mapa.js" ></script>
 </body>
 </html>
