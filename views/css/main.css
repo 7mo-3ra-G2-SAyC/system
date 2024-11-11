@@ -80,6 +80,8 @@ header{
 
     overflow-y: auto;
     scrollbar-width: thin;
+
+    padding-bottom: 1rem;
 }
 
 #footer {
