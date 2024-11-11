@@ -1,0 +1,51 @@
+@extern('header')
+
+    <link rel="stylesheet" href="views/css/cronograma.css{{PROJECT_MODE}}">
+    <link rel="stylesheet" href="views/css/landing.css">
+
+    <div class="loading-screen">
+        <h3>Cargando horarios...</h3>
+    </div>
+
+    <header>
+        <div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
+        <div id="header_links">
+            <a href="landing">Inicio</a>
+            <a href="cronograma">Horarios</a>
+            <a href="mapa">Mapa</a>
+            <a href="logout">Cerrar Sesión</a>
+        </div>
+	</header>
+
+    <div id="container">
+        <div class="cronograma-title">
+            <h1>Cronograma Guías</h1>
+            <h4>Recorrido curso:</h4>
+        </div>        
+        <div class="filter">
+            <select class="cronograma-select">
+                <option value="todos">Todos los cursos</option>
+                <!-- Agregar más opciones según los cursos disponibles -->
+            </select>
+        </div>
+        <div class="table-scroll">
+            <table id="table-cronograma" border="1">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Turno</th>
+                        <th>Categoría</th>
+                        <th>Aula</th>
+                        <th>Piso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se insertarán las filas del cronograma dinámicamente -->
+                </tbody>
+            </table>    
+        </div>
+    </div>
+
+    <script src="views/javascript/cronogramaGuias.js{{PROJECT_MODE}}"></script>
+
+@extern('footer')

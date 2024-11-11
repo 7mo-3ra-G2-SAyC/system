@@ -1,0 +1,8 @@
+# Habilitamos la ingenieria de reescritura de url
+RewriteEngine On
+
+# lo que viene despues del dominio no es un nombre de archivo
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# siempre se carga index.php
+RewriteRule ^(.*)$ index.php

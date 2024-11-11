@@ -14,16 +14,21 @@
 	 * */
 	class Guia extends DBAbstract{
 
+
+
 		/**
 		 * 
 		 * Crea el objeto y crea de forma automática los atributos
 		 * basandose en las columnas de la tabla que representa
 		 * 
 		 * */
-		function __construct($carnet, $dni){
+		function __construct(){
 			parent::__construct();
+		}
 
-			$sql = "DESCRIBE guias;";
+
+
+		function setAttributes($params){
 
 			$result = $this->query($sql);
 
@@ -41,8 +46,9 @@
 
 			$this->carnet = $carnet;
 			$this->dni = $dni;
+		} 
 
-		}
+
 
 		/**
 		 * 
@@ -50,11 +56,19 @@
 		 * @return array|bool arreglo con los datos del usuario|si no lo encontro false
 		 * 
 		 * */
-		function getByNroCarnet(){
+		function getByNroCarnet($params){
 
-			$result = $this->query("SELECT * FROM guias WHERE carnet = '".$this->carnet."'");
+			if(isset($params["carnet"])){
+				$carnet = $params["carnet"];
+			}
 
-			if(count($result)==0){
+			if(isset($_SESSION["sayc"]["user"]["carnet"])){
+				$carnet = $_SESSION["sayc"]["user"]["carnet"];
+			}
+
+			$result = $this->query("SELECT * FROM guias WHERE carnet = '$carnet'");
+
+			if(count($result) === 0){
 				return false;
 			}
 
@@ -77,12 +91,15 @@
 		 * @return array arreglo con el resultado del intento de login
 		 * 
 		 * */
-		function login(){
+		function login($params){
+
+			$carnet = $params["carnet"];
+			$dni = $params["dni"];
 
 			$vector_error = ["error" => "", "errno" => 0];
 
 			// verifica si el guia existe en la db
-			$result = $this->getByNroCarnet();
+			$result = $this->getByNroCarnet($params);
 
 			// no se encontro el numero de carnet
 			if(!$result){
@@ -95,7 +112,7 @@
 			$result = $result[0];
 
 			// El DNI no es correcto
-			if($result["dni"]!=$this->dni){
+			if($result["dni"] != $dni){
 				$vector_error["error"] = "El DNI no es valido";
 				$vector_error["errno"] = 405;
 
@@ -105,16 +122,11 @@
 			// se agrega al arreglo los mensajes de error
 			$result = array_merge($vector_error, $result);
 
-			// aqui deberiamos colocar la autocarga de los atributos de ese usuario
-			//===================
-
-			foreach ($this->attributes as $key => $attribute) {
-				$this->$attribute = $result[$attribute];
-			}
-
-
-			return $result;
+			// guarda los dato del guia logueado
+			$_SESSION['sayc']['user']['dni'] = $dni;
+			$_SESSION['sayc']['user']['carnet'] = $carnet;
 			
+			return $result;
 		}
 	}
 
@@ -123,31 +135,31 @@
 	 * Clase para trabajar con muchos usuarios
 	 * 
 	 * */
-	class Guias extends DBAbstract{
+	// class Guias extends DBAbstract{
 
-		/**
-		 * 
-		 * Constructor de la clase
-		 * 
-		 * */
-		function __construct(){
+	// 	/**
+	// 	 * 
+	// 	 * Constructor de la clase
+	// 	 * 
+	// 	 * */
+	// 	function __construct(){
 
-			parent::__construct();
+	// 		parent::__construct();
 
-		}
+	// 	}
 
-		/**
-		 * 
-		 * retorna la cantidad de guias en la tabla de guias
-		 * @return int cantidad de guias en la tabla de guias
-		 * 
-		 * */
-		function getCant(){
+	// 	/**
+	// 	 * 
+	// 	 * retorna la cantidad de guias en la tabla de guias
+	// 	 * @return int cantidad de guias en la tabla de guias
+	// 	 * 
+	// 	 * */
+	// 	function getCant(){
 
-			return count($this->query("SELECT * FROM guias"));
-		}
+	// 		return count($this->query("SELECT * FROM guias"));
+	// 	}
 
-	}
+	// }
 
 
  ?>

@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Panel</title>
-</head>
-<body>
-	<h2>Bienvenido {{NOMBRE_GUIA}}!</h2>
-	<a href="?slug=logout">Cerrar Sesion</a>
-</body>
-</html>
+@extern('header')
+
+	<link rel="stylesheet" href="views/css/landing.css">
+	<div class="loading-screen">
+		<h3>Cargando panel...</h3>
+	</div>
+
+	<header>
+        <div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
+        <div id="header_links">
+            <a href="landing">Inicio</a>
+            <a href="cronograma">Horarios</a>
+            <a href="mapa">Mapa</a>
+			<a href="logout">Cerrar Sesión</a>
+        </div>
+	</header>
+	
+	<div id="container">
+		<h1>Bienvenido <span id="name_guide"></span>!</h1>
+	</div>
+
+	<script src="views/javascript/panel.js"></script>
+
+@extern('footer')
