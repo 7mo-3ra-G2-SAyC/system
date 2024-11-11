@@ -6,23 +6,17 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
 .mapa {
     background-color: #e5ead4;
     flex: max-content;
     height: 100%;
     position: relative;
+    scrollbar-width: thin;
 
     h2 {
         position: relative;
         font-size: 48px;
-        left: 75px;
+        left: 0px;
     }
 
     .contentMap {
@@ -35,6 +29,7 @@ body {
     }
 
     .map {
+        padding: 2rem;
         position: relative;
         background-color: burlywood;
         width: 100%;

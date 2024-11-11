@@ -24,40 +24,139 @@
     user-select: none;
 }
 
-#header{
-    height: 3rem;
+header{
+    height: 4rem;
 
     padding: 1rem;
 
-    background-color: #3B4D4B;
+    background-color: #334F53;
     
-    display: grid;
-    place-items: center;
-}
-
-#header ul{
-    width: 100%;
-
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    
+    #navbar_logo{
+        width: 2.5rem;
+    }
+    
+    a{
+        display: block;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 1.3rem;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    #header_title{
 
-    list-style: none;
-}
+        float: left;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #f2f2f2;
+        padding: 0.9rem 1.2rem;
+        display: flex;
+        align-items: center;
 
-#header ul li a{
-    color: white;
-    text-decoration: none;
+    }
+    
+    #header_links {
 
-    transition: ease-in-out 150ms;
-}
+        float: right;
 
-#header ul li a:hover{
-    color: black;
+        a{
+            float: left;
+        }
+
+    }
+
 }
 
 #container{
     width: 100%;
-    /* height: calc(100vh - 3rem); */
-    padding: 1rem;
+    height: calc(100vh - 10rem);
+
     background-color: #E5EAD4;
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    padding-bottom: 1rem;
+}
+
+#footer {
+    width: 100%;
+    min-height: 6rem;
+
+    background-color: #334F53;
+
+    text-align: center;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    #logo{
+        width: 5rem;
+
+        display: grid;
+        place-items: center;
+
+        img{
+            width: 100%;
+        }
+
+    }
+
+    #contacto {
+        flex: 1;
+
+        padding: 8px;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 2rem;
+
+        span{
+            margin: 0;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+            row-gap: 1rem;
+
+            color: white;
+        }
+
+        #comunidad{
+            flex: 1;
+        }
+
+    }
+
+    @media (width <= 620px){
+
+        #contacto{
+            flex-direction: column;
+        }
+
+        #logo{
+            width: 100%;
+            padding: 1rem;
+
+            img{
+                width: 5rem;
+            }
+
+        }
+
+    }
+
 }

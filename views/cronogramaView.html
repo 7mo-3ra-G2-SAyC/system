@@ -1,7 +1,6 @@
 @extern('header')
 
     <link rel="stylesheet" href="views/css/cronograma.css{{PROJECT_MODE}}">
-    <link rel="stylesheet" href="views/css/landing.css">
     
     <div class="loading-screen">
         <h3>Cargando horarios...</h3>
@@ -19,21 +18,22 @@
     </template>
 
     <header>
-		<div class="navbar">
-			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
-			<div class="navbar__links">
-				<a href="landing">Inicio</a>
-				<a href="cronograma">Horarios</a>
-				<a href="mapa">Mapa</a>
-			</div>
-		</div>
+        <div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
+        <div id="header_links">
+            <a href="landing">Inicio</a>
+            <a href="cronograma">Horarios</a>
+            <a href="mapa">Mapa</a>
+        </div>
 	</header>
     
     <div id="container">
+
         <div class="logo">
             <img src="views/img/logo_sayc.png" alt="Logo">
         </div>
+
         <h1>Cronograma</h1>
+
         <div class="filter">
             <select id="select_dia" class="cronograma-select">
                 <option value="2024-08-20">Día 1</option>
@@ -41,6 +41,7 @@
                 <!-- Agregar más opciones según los cursos disponibles -->
             </select>
         </div>
+
         <div class="table-scroll">
             <table id="table-cronograma" border="1">
                 <thead>
