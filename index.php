@@ -38,7 +38,7 @@
     $connected_guide = ['panel', 'logout', 'cronogramaGuias'];
 
     // si inicio sesion
-    if (!empty($_SESSION['sayc'])) {
+    if (!empty($_SESSION['sayc']['user'])) {
         // carga los controladores no permitidos
         $forbidden_sections = $connected_anonymous;
 

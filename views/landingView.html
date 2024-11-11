@@ -3,22 +3,21 @@
 	<link rel="stylesheet" href="views/css/landing.css">
 
 	<header>
-		<div class="navbar">
-			<div class="navbar__title"><img src="views/img/logo_sayc.png" class="navbar_logo" alt="logo_sayc">SAyC</div>
-			<div class="navbar__links">
-				<a href="landing">Inicio</a>
-				<a href="cronograma">Horarios</a>
-				<a href="mapa">Mapa</a>
-			</div>
-		</div>
-
+        <div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
+        <div id="header_links">
+            <a href="landing">Inicio</a>
+            <a href="cronograma">Horarios</a>
+            <a href="mapa">Mapa</a>
+        </div>
 	</header>
 
 	<div id="content">
 
 		<div id="landing">
 			<img src="views/img/logo_sayc.png" class="landing_logo" alt="logo_sayc">
-			<h1 class="landing__title">SAyC</h1>
+			<div id="landing__title__container">
+				<h1 class="landing__title">SAyC</h1>
+			</div>
 		</div>
 		<div class="gridBox">
 			<div class="caja1"></div>
@@ -110,11 +109,13 @@
 					<h3 class="description"><li>Horarios y detalles de todas las actividades programadas.</li></h3>
 				</div>
 				<div id="container__btn">
-					<button class="btn">Ver Cronograma
-						<svg width="34" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M0 10H31M31 10L23 2M31 10L23 17.5" stroke="#334F53" stroke-width="4"/>
-						</svg>	
-					</button>
+					<a href="https://sayc-76fee51f670d.herokuapp.com/cronograma">
+						<button class="btn">Ver Cronograma
+							<svg width="34" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 10H31M31 10L23 2M31 10L23 17.5" stroke="#334F53" stroke-width="4"/>
+							</svg>	
+						</button>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -131,11 +132,13 @@
 					<h3 class="description"><li>Mapeo de la escuela con los salones disponibles,sus capacidades y eventos en tiempo real.</li></h3>
 				</div>
 				<div id="container__btn">
-					<button class="btn">Ver mapa
-						<svg width="30" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M0 10H31M31 10L23 2M31 10L23 17.5" stroke="#334F53" stroke-width="4"/>
-						</svg>
-					</button>
+					<a href="https://sayc-76fee51f670d.herokuapp.com/mapa">
+						<button class="btn">Ver mapa
+							<svg width="30" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0 10H31M31 10L23 2M31 10L23 17.5" stroke="#334F53" stroke-width="4"/>
+							</svg>
+						</button>
+					</a>
 				</div>
 			</div>
 			
