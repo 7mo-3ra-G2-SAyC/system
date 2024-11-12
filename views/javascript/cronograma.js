@@ -1,28 +1,42 @@
 const cronTable = document.querySelector("#table-cronograma tbody");
 
-async function setTableContent(){
+const content = await fetchApi("cronograma", "getFullSchedule");
 
-    const content = await fetchApi("cronograma", "getFullSchedule");
+const dia1='2024-11-13'
 
-    content.forEach( row => {
+const dataDia =  content.filter(item => item.fecha==dia1)
 
-        let tr = document.createElement("tr");
-        let descriptions = Object.values(row);
+async function setTableContent(date){
+    cronTable.innerHTML=''
 
-        descriptions.forEach( description => {
-            tr.innerHTML += `<td>${description}</td>`;
-        });
+    date.forEach( row => {   
+        /*< captuta la plantilla*/
+        const tpl = tpl_row_table.content
+        /*< clona la plantilla como un nodo completo*/
+        const tr = tpl.cloneNode(true);
+
+
+		tr.querySelector('.tpl-col-pre').innerHTML = row.presentador
+        tr.querySelector('.tpl-col-act').innerHTML = row.actividad
+        tr.querySelector('.tpl-col-tur').innerHTML = row.turno
+        // tr.querySelector('.tpl-col-cat').innerHTML = row.categoria
+        tr.querySelector('.tpl-col-aul').innerHTML = row.aula
+        tr.querySelector('.tpl-col-pis').innerHTML = row.ubicacion
 
         cronTable.appendChild(tr);
 
     });
 }
 
-document.addEventListener("DOMContentLoaded", async e => {
+await setTableContent(dataDia);
 
-    await setTableContent();
+document.querySelector(".loading-screen").style.opacity = "0%";
+document.querySelector(".loading-screen").style.visibility = "hidden";
 
-    document.querySelector(".loading-screen").style.opacity = "0%";
-    document.querySelector(".loading-screen").style.visibility = "hidden";
 
-});
+select_dia.addEventListener('change',async e=>{
+    const dataDia = content.filter(item => item.fecha==select_dia.value)
+    
+    await setTableContent(dataDia);
+})
+

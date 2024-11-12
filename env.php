@@ -25,10 +25,10 @@
 
 
 	/* Environment variables for database connection */
-	$_ENV["HOST"] = "zgv.h.filess.io";
-	$_ENV["USER"] = "sayc_mainlytiny";
-	$_ENV["PASS"] = "d039c619472498315599f2099b8d2b251becc12d";
-	$_ENV["DB"] = "sayc_mainlytiny";
+	$_ENV["HOST"] = "mattprofe.com.ar";
+	$_ENV["USER"] = "3887";
+	$_ENV["PASS"] = "caballo.higuera.pesa";
+	$_ENV["DB"] = "3887";
 	$_ENV["PORT"] = 3307;
 
 ?>
