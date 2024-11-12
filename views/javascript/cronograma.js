@@ -2,7 +2,7 @@ const cronTable = document.querySelector("#table-cronograma tbody");
 
 const content = await fetchApi("cronograma", "getFullSchedule");
 
-const dia1='2024-08-20'
+const dia1='2024-11-13'
 
 const dataDia =  content.filter(item => item.fecha==dia1)
 
@@ -19,9 +19,9 @@ async function setTableContent(date){
 		tr.querySelector('.tpl-col-pre').innerHTML = row.presentador
         tr.querySelector('.tpl-col-act').innerHTML = row.actividad
         tr.querySelector('.tpl-col-tur').innerHTML = row.turno
-        tr.querySelector('.tpl-col-cat').innerHTML = row.categoria
+        // tr.querySelector('.tpl-col-cat').innerHTML = row.categoria
         tr.querySelector('.tpl-col-aul').innerHTML = row.aula
-        tr.querySelector('.tpl-col-pis').innerHTML = row.piso
+        tr.querySelector('.tpl-col-pis').innerHTML = row.ubicacion
 
         cronTable.appendChild(tr);
 

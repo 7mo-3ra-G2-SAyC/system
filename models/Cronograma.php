@@ -47,22 +47,29 @@
 
             $talleristas=$this->query("SELECT * FROM talleristas");
 
-            $sql="SELECT 
-                    cronograma.fecha,
-                    pre.id_curso,
-                    pre.id_tallerista,
-                    actividades.nombre AS 'actividad', 
-                    turnos.descripcion AS 'turno', 
-                    ac_cat.nombre, aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' 
-                    FROM actividades 
-                    INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad 
-                    INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula 
-                    INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria 
-                    INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno
-                    INNER JOIN actividades_categorias as ac_cat ON actividades.id_categoria=ac_cat.id_categoria
-                    INNER JOIN presentadores as pre ON actividades.id_presentacion=pre.id_presentacion;";
+            $sql="SELECT
+    cronograma.fecha,
+    actividades.presentacion AS 'presentador',
+    actividades.nombre AS 'actividad',
+    turnos.descripcion AS 'turno',
+    ac_cat.nombre,
+    aulas.nombre AS 'aula',
+    aula_categorias.descripcion AS 'ubicacion',
+    cronograma.inicio,
+    cronograma.fin
+FROM
+    actividades
+INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad
+INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula
+INNER JOIN aula_categorias ON aulas.id_categoria = aula_categorias.id_categoria
+INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno
+INNER JOIN actividades_categorias AS ac_cat
+ON
+    actividades.id_categoria = ac_cat.id_categoria;";
         
             $cronograma = $this->query($sql);
+
+            return $cronograma;
 
             $c=0;
             foreach ($cronograma as $item) {
@@ -126,7 +133,30 @@
             $result = $this->query("SELECT actividades.descripcion AS 'actividad', actividades.duracion, actividades.descanso, turnos.descripcion AS 'turno', actividades_categorias.nombre AS 'categoria', aulas.nombre AS 'aula', aula_categorias.descripcion AS 'ubicacion' FROM actividades INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad INNER JOIN actividades_categorias ON actividades_categorias.id_categoria = actividades.id_categoria INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula INNER JOIN aula_categorias ON aulas.id_categoria=aula_categorias.id_categoria INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno WHERE cronograma.fecha = '$day'");
             return $result;
         }
-
+        function getActivitiesByFloor($params){
+            $floor = $params['floor'];
+            $day = $params['day'];
+            $result = $this->query("SELECT
+    cronograma.fecha,
+    actividades.presentacion AS 'presentador',
+    actividades.nombre AS 'actividad',
+    turnos.descripcion AS 'turno',
+    ac_cat.nombre,
+    aulas.nombre AS 'aula',
+    aula_categorias.descripcion AS 'ubicacion',
+    cronograma.inicio,
+    cronograma.fin
+FROM
+    actividades
+INNER JOIN cronograma ON cronograma.id_actividad = actividades.id_actividad
+INNER JOIN aulas ON cronograma.id_aula = aulas.id_aula
+INNER JOIN aula_categorias ON aulas.id_categoria = aula_categorias.id_categoria
+INNER JOIN turnos ON cronograma.id_turno = turnos.id_turno
+INNER JOIN actividades_categorias AS ac_cat
+ON
+    actividades.id_categoria = ac_cat.id_categoria WHERE aulas.id_categoria='$floor' AND cronograma.fecha='$day';");
+            return $result;
+        }
         /**
          * Function to get all activities of the SAyc/expo of a specific day and specific floor
          * @param $day day to filter
