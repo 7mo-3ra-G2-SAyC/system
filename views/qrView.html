@@ -1,0 +1,64 @@
+@extern('header')
+
+<head>
+    <link rel="stylesheet" href="/views/css/qr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<div id="container">
+
+    <header>
+        <div id="header_title"><img src="views/img/logo_sayc.png" id="navbar_logo" alt="logo_sayc">SAyC</div>
+        <div id="header_links">
+            <a href="landing">Inicio</a>
+            <a href="cronograma">Horarios</a>
+            <a href="mapa">Mapa</a>
+        </div>
+    </header>
+
+    <h2>Imprimir QR</h2>
+    
+    <content>
+        <div class="card">
+            <div class="qr">
+                <!-- Contenedor del código QR -->
+                <div id="qrcode"></div>
+            </div>
+            <div class="texto">
+                <div class="link">
+                    <!-- Campo de entrada para el enlace -->
+                    <label for="qrInput">Ingresa el enlace para el QR:</label>
+                    <input type="text" id="qrInput" placeholder="https://tusitio.com" />
+                </div>
+                <hr>
+            </div>
+        </div>
+    </content>
+
+</div>
+
+<script>
+    // Inicializa el contenedor del código QR vacío
+    const qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 512,
+        height: 512,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Obtén el campo de entrada
+    const qrInput = document.getElementById("qrInput");
+
+    // Actualiza el código QR cuando el valor del campo de entrada cambia
+    qrInput.addEventListener("input", function() {
+        const newText = qrInput.value.trim();
+        
+        // Limpia el contenedor del QR y genera uno nuevo con el texto ingresado
+        qrcode.clear();  // Limpia el QR actual
+        qrcode.makeCode(newText);  // Genera un nuevo QR con el texto ingresado
+    });
+</script>
+
+
+@extern('footer')
